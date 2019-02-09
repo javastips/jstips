@@ -1,3 +1,5 @@
+/* Cette fonction dessine une forme arborescente en traçant une ligne, en déplaçant le centre du système de coordonnées jusqu'à la fin de la ligne et en s'appelant deux fois: elle a d'abord pivoté à gauche, puis à droite. Chaque appel réduit la longueur de la branche dessinée et la récursivité s’arrête lorsque la longueur passe au-dessous de 8. */
+
 let cx = document.querySelector('canvas').getContext("2d");
 	function branch(length , angle , scale) {
 	  cx.fillRect(0, 0, 1, length);
