@@ -1,7 +1,7 @@
 ![alt text](js.gif)
 
 # JavasTips
- Coming Soon 😏
+ 😏
 
  1. [What is JavasTips](#introduction)
   
