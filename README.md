@@ -3,6 +3,9 @@
 # JavasTips
  Coming Soon 😏
 
+ 1. [What is JavasTips](#introduction)
+  
+
 ```javascript 
    console.log('JavasTips for fun 🤯');
 ```
