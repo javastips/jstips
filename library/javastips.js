@@ -44,6 +44,31 @@ library.filter = function(array, callback) {
   return store;
 }
 
+library.easyReduce = function (array, combine, start) {
+  let current = start;
+  for(let element of array) {
+    current = combine(current, element);
+  }
+  return current;
+}
+
+
+library.reduce = function(list, callback , initialValue){
+  let memo = initialValue; 
+  for( var i = 0; i < list.length; i++) {
+    if(i === 0 && memo === undefined)  {
+      memo += list[0] ;
+      i++;
+    } else {
+      memo = callback(list[i], memo)
+    }
+    callback(list[i], memo) 
+  }
+  return memo;
+}
+
+
+
 // function to trie values of an array 
 library.sort = function (array) {
     // function swap() {
@@ -84,10 +109,10 @@ library.reverse = function() {
 
 
 // Destructuring of tips object 
-const { each , map , filter , linearSearch }  = library; 
+const { each , map , reduce , easyReduce , filter , linearSearch }  = library; 
 
 // export modules 
 module.exports = {
-    each , map , filter , linearSearch 
+    each , map , reduce, easyReduce ,  filter , linearSearch 
 };
 
