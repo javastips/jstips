@@ -37,14 +37,33 @@ library.filter = function() {
 };
 
 // function to trie values of an array 
-library.sort = function (array , ) {
-    function swap() {
+library.sort = function (array) {
+    // function swap() {
 
-    }
+    // }
 
 };
 
-library.linearSearch = function () {
+// Simple linear search implementation 
+library.linearSearch = function (array, number) {
+  // size of array
+  var size = array.length; 
+  //check if the array it's really an array
+  if(Array.isArray(array)) {
+    // if an array , loop the array
+    for(var i = 0; i < size; i++) {
+      // check if the number is present in the array 
+      if(array[i] == number) {
+        // show true and the position in the array
+       console.log(true);
+      }
+    }
+    // if is not present show false;
+    console.log(false);
+  } // if not an array show error message 
+  else {
+    console.log('Wrong type ! , you need an array');
+  }
     
 };
 
@@ -55,8 +74,10 @@ library.reverse = function() {
 
 
 // Destructuring of tips object 
-const { each , map  }  = library; 
+const { each , map , linearSearch }  = library; 
+
+// export modules 
 module.exports = {
-    each , map  
+    each , map , linearSearch 
 };
 

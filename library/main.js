@@ -1,7 +1,7 @@
 const tips = require('./javastips');
 
 // Using each method 
-tips.each(['Sarah', 'Pamela', 'Jessica'], function(name,i, list) { // Sarah 0
+tips.each(['Bianca', 'Pamela', 'Jessica'], function(name,i, list) { // Sarah 0
     if(list[i + 1]) { // true
       console.log(name, 'is younger than', list[i + 1 ] )
     } else {
@@ -9,4 +9,9 @@ tips.each(['Sarah', 'Pamela', 'Jessica'], function(name,i, list) { // Sarah 0
     }
 });
 
+
 // Using map method 
+
+
+// linear search 
+tips.linearSearch([1,2,3,4,5,6,7,8], 0);
