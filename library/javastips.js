@@ -24,7 +24,7 @@ library.each = function(list, callback) {
 library.map = function(list, callback) {
     // create an empty array to store
    var storage = [];
-   tips.each(list, function(v,i, list) {
+   library.each(list, function(v,i, list) {
       storage.push(callback(v, i, list));
    });
    // return []
@@ -32,9 +32,17 @@ library.map = function(list, callback) {
 };
 
 // filter array
-library.filter = function() {
-
-};
+library.filter = function(array, callback) {
+  // create a new array
+  var store = [];
+  // loop through the array
+  library.each(array, function(item, i, list) {
+    // check if callback return true
+    if(callback(item, i,list)) store.push(item);
+  });
+  //return array
+  return store;
+}
 
 // function to trie values of an array 
 library.sort = function (array) {
@@ -47,7 +55,7 @@ library.sort = function (array) {
 // Simple linear search implementation 
 library.linearSearch = function (array, number) {
   // size of array
-  var size = array.length; 
+  var size = array.length, position = 0;
   //check if the array it's really an array
   if(Array.isArray(array)) {
     // if an array , loop the array
@@ -55,7 +63,9 @@ library.linearSearch = function (array, number) {
       // check if the number is present in the array 
       if(array[i] == number) {
         // show true and the position in the array
-       console.log(true);
+       position = array[i] - 1;
+        console.log(`L'élément ce situe à la position ${position} du tableau .`);
+        return ;
       }
     }
     // if is not present show false;
@@ -74,10 +84,10 @@ library.reverse = function() {
 
 
 // Destructuring of tips object 
-const { each , map , linearSearch }  = library; 
+const { each , map , filter , linearSearch }  = library; 
 
 // export modules 
 module.exports = {
-    each , map , linearSearch 
+    each , map , filter , linearSearch 
 };
 
