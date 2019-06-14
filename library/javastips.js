@@ -68,6 +68,58 @@ library.reduce = function(list, callback , initialValue){
 }
 
 
+// find function , help us to ifn a value, inside an array , an object or an string
+library.find = function(value, inside) {
+    var finded;
+    // if inside it's an array
+    if(Array.isArray(inside)) {
+      // we loop it with the eaxh method
+      var looping = this.each(inside, (v) => {
+        // we compared them
+        if(v === value) {
+          finded = true;
+        } else {
+          finded = false;
+        }
+      });
+    }
+    // if the type of iniside is an object 
+    else if(typeof inside === "object") {
+      // we check the value with Object.values methods
+      var values = Object.values(inside);
+      // we loop through the values
+      for( let v of values) {
+        // and if values as similair with the value params
+        if(Object.is(v, value)) {
+          // we find him
+          finded = true;
+        } 
+        finded = false;
+      }
+      
+    }
+    // if the type of iniside is a string 
+    else if( typeof inside === "string") {
+      // we check if the is gratter than the value 
+      if(inside.length < value) {
+        // we log an error
+        console.error("Cannot find the value , string so short");
+      } else {
+        // else we split the sentence inside an array
+        var classifier = inside.split(' ')
+        // filter the sentence by cacthing the great value
+            .filter(v => v === value);
+        // and if this two value macth we initialise finded to true
+        if(classifier === value) finded = true;
+        // else to false
+        else finded = false;
+      }
+    }
+    console.log(finded)
+}
+
+
+
 
 // function to trie values of an array 
 library.sort = function (array) {
@@ -109,10 +161,10 @@ library.reverse = function() {
 
 
 // Destructuring of tips object 
-const { each , map , reduce , easyReduce , filter , linearSearch }  = library; 
+const { each , map , reduce , easyReduce, find , filter , linearSearch }  = library; 
 
 // export modules 
 module.exports = {
-    each , map , reduce, easyReduce ,  filter , linearSearch 
+    each , map , reduce, easyReduce , find , filter , linearSearch 
 };
 
