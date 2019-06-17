@@ -39,6 +39,5 @@ tips.find('eat'," Today we gonna eat spagetti ");
 
 
 // reversing en element
-tips.reverse("Hello"); // [ 'o', 'l', 'l', 'e', 'H' ]
-tips.reverse("Hola"); // [ 'a', 'l', 'o', 'H' ]
-
+console.log(String(tips.reverse("Hello")));
+console.log(tips.reverse([1, 3, 4, 6]));

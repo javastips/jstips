@@ -159,12 +159,12 @@ library.reverse =  function(character){
   var reversed = [], 
       len = character.length
   ;
-  
   for(var i = len - 1; i >= 0; i--) {
     reversed.push(character[i]);
   }
-
-  console.log(reversed)
+  
+  // return  the new element reversed
+  return reversed;
 }
 
 
