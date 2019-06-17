@@ -26,12 +26,19 @@ let users = [
 ];
 // Print users not actived
 console.log(tips.filter(users,(u) => u.active ));
+
 // linear search 
 tips.linearSearch([1,2,3,4,5,6,7,8], 5); // return true
 
 
 // Using find method from tips
+//tips.find(4, [1,2,3,4]); // return true and the position and the value // true
+//tips.find('Apple', { 1 : 'Mango', 2: 'Banana', 3: 'Orange'}); // false
 
-tips.find(4, [1,2,3,4]); // return true and the position and the value // true
-tips.find('Apple', { 1 : 'Mango', 2: 'Banana', 3: 'Orange'}); // false
-tips.find('eat'," Today we gonna eat spagetti ");  // true
+tips.find('eat'," Today we gonna eat spagetti ");
+
+
+// reversing en element
+tips.reverse("Hello"); // [ 'o', 'l', 'l', 'e', 'H' ]
+tips.reverse("Hola"); // [ 'a', 'l', 'o', 'H' ]
+

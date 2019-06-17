@@ -101,7 +101,7 @@ library.find = function(value, inside) {
     // if the type of iniside is a string 
     else if( typeof inside === "string") {
       // we check if the is gratter than the value 
-      if(inside.length < value) {
+      if(inside.length <= value) {
         // we log an error
         console.error("Cannot find the value , string so short");
       } else {
@@ -110,7 +110,7 @@ library.find = function(value, inside) {
         // filter the sentence by cacthing the great value
             .filter(v => v === value);
         // and if this two value macth we initialise finded to true
-        if(classifier === value) finded = true;
+        if(classifier == value) finded = true;
         // else to false
         else finded = false;
       }
@@ -155,16 +155,24 @@ library.linearSearch = function (array, number) {
 };
 
 // function  reversing element's
-library.reverse = function() {
+library.reverse =  function(character){
+  var reversed = [], 
+      len = character.length
+  ;
+  
+  for(var i = len - 1; i >= 0; i--) {
+    reversed.push(character[i]);
+  }
 
+  console.log(reversed)
 }
 
 
 // Destructuring of tips object 
-const { each , map , reduce , easyReduce, find , filter , linearSearch }  = library; 
+const { each , map , reduce , easyReduce, find , filter , reverse,  linearSearch }  = library; 
 
 // export modules 
 module.exports = {
-    each , map , reduce, easyReduce , find , filter , linearSearch 
+    each , map , reduce, easyReduce , find , filter, reverse , linearSearch 
 };
 
