@@ -44,6 +44,7 @@ library.filter = function(array, callback) {
   return store;
 }
 
+// second implementation of reduce with es6 syntax
 library.easyReduce = function (array, combine, start) {
   let current = start;
   for(let element of array) {
@@ -52,7 +53,7 @@ library.easyReduce = function (array, combine, start) {
   return current;
 }
 
-
+// hard implementation of reduce 
 library.reduce = function(list, callback , initialValue){
   let memo = initialValue; 
   for( var i = 0; i < list.length; i++) {
@@ -119,7 +120,12 @@ library.find = function(value, inside) {
 }
 
 
-// function to sort values inside an array & an object
+/* 
+ * function to sort values inside an array 
+ * this function doesn't work like sort function used in es6
+ * this implementatio as inspired from bubble sort .
+ * 
+*/
 library.sort = function (element) {
     // length of the array
     var len = element.length;
@@ -168,7 +174,7 @@ library.linearSearch = function (array, number) {
     
 };
 
-// function  reversing element's
+// function reversing element's
 library.reverse =  function(character){
   var reversed = [], 
       len = character.length
