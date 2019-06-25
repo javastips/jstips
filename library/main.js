@@ -37,7 +37,10 @@ tips.linearSearch([1,2,3,4,5,6,7,8], 5); // return true
 
 tips.find('eat'," Today we gonna eat spagetti ");
 
-
 // reversing en element
 console.log(String(tips.reverse("Hello")));
-console.log(tips.reverse([1, 3, 4, 6]));
+console.log(reversing = tips.reverse([1, 3, 4, 6]));
+
+// sorting an array
+console.log(tips.sort([2,1,3,5,3])) // [ 1, 2, 3, 3, 5 ]
+console.log(tips.sort(reversing)) // [ 1, 3, 4, 6 ] , sort the reversing array at line 42

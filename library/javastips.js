@@ -119,16 +119,30 @@ library.find = function(value, inside) {
 }
 
 
+// function to sort values inside an array & an object
+library.sort = function (element) {
+    // length of the array
+    var len = element.length;
 
-
-// function to trie values of an array 
-library.sort = function (array) {
-    // function swap() {
-
-    // }
-
+    // the swap function change the position of elements
+    // by verifiying if index1 < than index2 from the array
+    function swap(array, index1, index2) {
+      var temp = array[index1];
+      array[index1] = array[index2];
+      array[index2] = temp;
+    }
+    // looping the array and compare values
+    for(var i = 0; i < len; i++) {
+      for(var j = 0; j <= i; j++ ) {
+        if(element[i] < element[j]) {
+          swap(element, i, j);
+        }
+      }
+    }
+    // return []
+    return element;
 };
-
+  
 // Simple linear search implementation 
 library.linearSearch = function (array, number) {
   // size of array
@@ -169,10 +183,10 @@ library.reverse =  function(character){
 
 
 // Destructuring of tips object 
-const { each , map , reduce , easyReduce, find , filter , reverse,  linearSearch }  = library; 
+const { each , map , reduce , easyReduce, find , filter , reverse , sort,  linearSearch }  = library; 
 
 // export modules 
 module.exports = {
-    each , map , reduce, easyReduce , find , filter, reverse , linearSearch 
+    each , map , reduce, easyReduce , find , filter, reverse , sort ,  linearSearch 
 };
 
