@@ -7,6 +7,7 @@ Array.dim = function(dimension, initial) {
     return a;
 }
 
+// matrix methodes
 Array.matrix = function(m, n , initial) {
     var a , i , j, mat = [];
     for (i = 0; i < m; i++) {
