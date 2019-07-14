@@ -39,6 +39,7 @@ tips.find('eat'," Today we gonna eat spagetti "); //
 
 // reversing en element
 console.log(String(tips.reverse("Hello")));
+
 console.log(reversing = tips.reverse([1, 3, 4, 6]));
 
 // sorting an array

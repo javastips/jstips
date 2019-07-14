@@ -129,7 +129,6 @@ library.find = function(value, inside) {
 library.sort = function (element) {
     // length of the array
     var len = element.length;
-
     // the swap function change the position of elements
     // by verifiying if index1 < than index2 from the array
     function swap(array, index1, index2) {
