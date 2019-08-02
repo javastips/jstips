@@ -213,8 +213,20 @@ library.reverse =  function(character){
 }
 
 
+// utils functions 
+
+library.not = function(fn) {
+  return function negated(...args) {
+    return !fn(...args);
+  };
+}
+
+
 // Destructuring of tips object 
-const { each , map , reduce , easyReduce, find , filter , reverse , sort, by ,  linearSearch }  = library; 
+const { 
+  each , map , reduce , easyReduce, find , 
+  filter , reverse , sort, by ,  linearSearch 
+}  = library; 
 
 // export modules 
 module.exports = {

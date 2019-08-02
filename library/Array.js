@@ -7,21 +7,9 @@ Array.dim = function(dimension, initial) {
     return a;
 }
 
-// matrix methodes
-Array.matrix = function(m, n , initial) {
-    var a , i , j, mat = [];
-    for (i = 0; i < m; i++) {
-        a = [];
-        for (j = 0; j < n; j++) {
-            a[j] = initial;
-        }
-        mat[i] = a;
-    }
-    return mat;
-};
 
-const { dim , matrix } = Array;
+const { dim  } = Array;
 
 module.exports = {
-    dim , matrix
-}
+    dim
+};

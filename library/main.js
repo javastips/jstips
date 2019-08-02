@@ -1,5 +1,5 @@
 const tips = require('./javastips');
-const tipsArray = require('./Array');
+
 
 // Using each method 
 tips.each(['Bianca', 'Pamela', 'Jessica'], function(name,i, list) { // BIANCA 0
@@ -46,17 +46,11 @@ console.log(reversing = tips.reverse([1, 3, 4, 6]));
 console.log(tips.sort([2,1,3,5,3])) // [ 1, 2, 3, 3, 5 ]
 console.log(tips.sort(reversing)) // [ 1, 3, 4, 6 ] , sort the reversing array at line 
 
-
-var matrice4x4 = tipsArray.matrix(4,4,0);
-console.log(matrice4x4);
-
 var s = [
   { firstName: 'Joe', lastName: 'Doe' },
   { firstName: 'Manue', lastName: 'Henrie' },
   { firstName: 'Gando', lastName: 'Bianca' }
 ];
 
-s.sort(tips.by('lastName'))
-
-console.log(s);
+console.log(s.sort(tips.by('lastName')));
 
