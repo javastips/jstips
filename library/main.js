@@ -50,3 +50,13 @@ console.log(tips.sort(reversing)) // [ 1, 3, 4, 6 ] , sort the reversing array a
 var matrice4x4 = tipsArray.matrix(4,4,0);
 console.log(matrice4x4);
 
+var s = [
+  { firstName: 'Joe', lastName: 'Doe' },
+  { firstName: 'Manue', lastName: 'Henrie' },
+  { firstName: 'Gando', lastName: 'Bianca' }
+];
+
+s.sort(tips.by('lastName'))
+
+console.log(s);
+

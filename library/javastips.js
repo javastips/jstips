@@ -147,6 +147,32 @@ library.sort = function (element) {
     // return []
     return element;
 };
+
+// La fonction by prend une string comme argument et 
+// renvoie une fonction de comparaison qui peut etre utilisée pour trier 
+// un tableau d'objets contenant cet argument
+
+library.by = function(name) {
+  return function(o,p) {
+    var a , b;
+    if(typeof o === 'object' && typeof p === 'object' && o && p) {
+      a = o[name]
+      b = p[name];
+      if(a === b) {
+        return 0;
+      }
+      if(typeof a === typeof b) {
+        return a < b ? -1 : 1;
+      }
+      return typeof a < typeof b ? -1 : 1;
+    } else {
+      throw {
+        name: 'Error',
+        message: `Exepected an object when sorting by ${name}`
+      };
+    }
+  };
+}
   
 // Simple linear search implementation 
 library.linearSearch = function (array, number) {
@@ -188,10 +214,10 @@ library.reverse =  function(character){
 
 
 // Destructuring of tips object 
-const { each , map , reduce , easyReduce, find , filter , reverse , sort,  linearSearch }  = library; 
+const { each , map , reduce , easyReduce, find , filter , reverse , sort, by ,  linearSearch }  = library; 
 
 // export modules 
 module.exports = {
-    each , map , reduce, easyReduce , find , filter, reverse , sort ,  linearSearch 
+    each , map , reduce, easyReduce , find , filter, reverse , sort , by, linearSearch 
 };
 
