@@ -35,7 +35,7 @@ tips.linearSearch([1,2,3,4,5,6,7,8], 5); // return true
 // Using find method from tips
 tips.find(4, [1,2,3,4]); // return true 
 tips.find('Apple', { 1 : 'Mango', 2: 'Banana', 3: 'Orange'}); // false
-tips.find('eat'," Today we gonna eat spagetti "); //
+tips.find('eat'," Today we gonna eat spagetti "); // true
 
 // reversing en element
 console.log(String(tips.reverse("Hello")));
@@ -52,5 +52,5 @@ var s = [
   { firstName: 'Gando', lastName: 'Bianca' }
 ];
 
-console.log(s.sort(tips.by('lastName')));
+console.log(s.sort(tips.by('lastName'))); // return the array of object sorted by lastname
 
