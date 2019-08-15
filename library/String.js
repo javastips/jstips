@@ -14,13 +14,13 @@ const LowerCase = function(string) {
 
 // return  a string with CamelCase
 const CamelCase = function(string) {
-    // _distingString = string.split(',');
-    // if(typeof _distingString[0] === "string") {
-    //     UpperCase(_distingString[0][0])
-    // }
-
-    // console.log(_distingString);
-    // return ;
+    if(typeof string === "string") {
+        return string.replace(/(?:^\w|[A-Z]|\b\w)/g, 
+            (word, index) => index === 0 ? LowerCase(word) : UpperCase(word)
+        ).replace(/\s+/g,'');
+    } else {
+        return new Error('Argument must be a string');
+    }    
 }
 
     
