@@ -22,5 +22,4 @@ const CamelCase = function(string) {
         return new Error('Argument must be a string');
     }    
 }
-
     
