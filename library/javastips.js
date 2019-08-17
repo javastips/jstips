@@ -156,20 +156,14 @@ library.by = function(name) {
   return function(o,p) {
     var a , b;
     if(typeof o === 'object' && typeof p === 'object' && o && p) {
-      a = o[name]
-      b = p[name];
-      if(a === b) {
-        return 0;
-      }
+      a = o[name] ; b = p[name];
+      if(a === b) { return 0 }
       if(typeof a === typeof b) {
         return a < b ? -1 : 1;
       }
       return typeof a < typeof b ? -1 : 1;
     } else {
-      throw {
-        name: 'Error',
-        message: `Exepected an object when sorting by ${name}`
-      };
+      return new Error(`Exepected an object when sorting by ${name}`);
     }
   };
 }
@@ -201,26 +195,20 @@ library.linearSearch = function (array, number) {
 
 // function reversing element's
 library.reverse =  function(character){
-  var reversed = [], 
-      len = character.length
-  ;
+  var reversed = [], len = character.length;
   for(var i = len - 1; i >= 0; i--) {
     reversed.push(character[i]);
   }
-  
   // return  the new element reversed
   return reversed;
 }
 
-
 // utils functions 
-
 library.not = function(fn) {
   return function negated(...args) {
     return !fn(...args);
   };
 }
-
 
 // Destructuring of tips object 
 const { 
