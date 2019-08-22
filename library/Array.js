@@ -19,11 +19,41 @@ Array.withoutDuplicate = function(array) {
     return newArray;
 }
 
+Array.findSum = function(arr, weight) {
+    var hastable = {};
+    var len = Array.LengthOf(arr); // lenght of the array
+    console.log( `length of the array: ${len}`); // check state
+    for (let i = 0; i < len; i++) {
+        var currentEl = arr[i], // looping of all elements
+            difference = weight - currentEl; 
+            console.log(currentEl); // range
+            console.log(difference); // values not inside of the range between the weigth and the array
+        if (hastable[currentEl] !== undefined)  {
+            return [i, hastable[weight - currentEl]];
+        } else {
+            hastable[difference] = i;
+        }    
+    }
+    return -1;
+}
 
-// Array.findSum = function() {
+Array.beginAndEndOf = function(array, begin , end) {
+    while (array) {
+        partArray = [];
+        if(!begin && !end) {
+            return array;
+        }
+        for(var i = begin; i < end; i++ ) {
+            partArray.push(array[i]);
+        }
+        return partArray;
+    }
+}
 
-// }
 
+var array = [1, 2, 5, 7, 9];
+console.log(Array.beginAndEndOf(array, 1, 2));
+console.log(Array.beginAndEndOf([...array ], 2 , 4));
 
 const { dim, LengthOf } = Array;
 
