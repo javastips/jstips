@@ -18,7 +18,6 @@ math.even = function (v) {
     return !odd(v);
 }
 
-
 math.matrix = function(m, n , initial) {
     var a , i , j, mat = [];
     for (i = 0; i < m; i++) {
@@ -30,3 +29,8 @@ math.matrix = function(m, n , initial) {
     }
     return mat;
 };
+
+
+// console.log(math);
+
+module.export
