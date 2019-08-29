@@ -14,9 +14,12 @@ Array.LengthOf = function(element) {
 };
 
 Array.withoutDuplicate = function(array) {
-    var newArray = new Set();
-    array.forEach((element, index) => newArray.add(element))
-    return newArray;
+    let newArray = new Set();
+
+    if(this.isArray(array)){
+        array.forEach((element, index) => newArray.add(element))
+        return newArray;
+    }
 }
 
 Array.findSum = function(arr, weight) {
@@ -50,10 +53,6 @@ Array.beginAndEndOf = function(array, begin , end) {
     }
 }
 
-
-var array = [1, 2, 5, 7, 9];
-console.log(Array.beginAndEndOf(array, 1, 2));
-console.log(Array.beginAndEndOf([...array ], 2 , 4));
 
 const { dim, LengthOf } = Array;
 

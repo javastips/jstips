@@ -23,3 +23,35 @@ const CamelCase = function(string) {
     }    
 }
 
+
+// Replace word inside a string
+const replaceAll = function(string, search, repl) {
+	while(string.indexOf(search) !== -1)
+	string = string.replace(search, repl);
+	return string;
+}
+
+// Trim string
+const trim = function(text) {
+	return text.replace(/^\s+|\s+$/g,"");
+}
+
+// Retrieve accent 
+const AccentToNoAccent = function(word) {
+	let norm = new Array('À','Á','Â','Ã','Ä','Å','Æ','Ç','È','É','Ê','Ë',
+		'Ì','Í','Î','Ï', 'Ð','Ñ','Ò','Ó','Ô','Õ','Ö','Ø','Ù','Ú','Û','Ü','Ý',
+		'Þ','ß', 'à','á','â','ã','ä','å','æ','ç','è','é','ê','ë','ì','í','î',
+		'ï','ð','ñ', 'ò','ó','ô','õ','ö','ø','ù','ú','û','ü','ý','ý','þ','ÿ');
+		
+	let spec = new Array('A','A','A','A','A','A','A','C','E','E','E','E',
+		'I','I','I','I', 'D','N','O','O','O','0','O','O','U','U','U','U','Y',
+		'b','s', 'a','a','a','a','a','a','a','c','e','e','e','e','i','i','i',
+		'i','d','n', 'o','o','o','o','o','o','u','u','u','u','y','y','b','y');
+		
+	for(var i = 0; i < spec.length; i++) {
+		word = replaceAll(str, norm[i], spec[i]);
+	}
+	return word;
+}
+
+
