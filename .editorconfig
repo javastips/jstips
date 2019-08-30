@@ -1,0 +1,21 @@
+root  = true
+
+[*]
+end_of_line = lf
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Matching multiple files with braces
+[*.{js}]
+charset = utf-8
+
+# 2 space indentation
+[*.js]
+indent_style = space
+indent_size = 2
+
+# matches the exact files either package.json
+[{package.json , .travis.yml}]
+indent_style = tab
+indent_size = 2
