@@ -26,7 +26,6 @@ export default class Tree {
     tree.traverse(this, (leaf) => {
       result = result || leaf.value === seachValue;
     });
-    // return the result
     return result;
   }
 

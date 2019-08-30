@@ -1,6 +1,5 @@
 ![alt text](https://raw.githubusercontent.com/svngoku/JavasTips/master/js.gif)
-
-# JavasTips
+ # JavasTips
 
  1.[What is JavasTips](#introduction)
    It's a library based on data stucture and problem solving algorithm in JavaScript .
@@ -41,12 +40,12 @@
 
 ### Regular tips
 
-* *each* - implementation of the forEach function .
-* *map* - return a new array ,work like map in es6 .
-* *filter* - filter an array and take a callback .
+* *each* - implementation of the forEach function | *take a callback* .
+* *map* - return a new array ,work like map in es6| *take a callback* .
+* *filter* - filter an array | *take a callback* .
 * *reduce* - reduce an array by one value .
 * *find* - find an element and return true if finded or false .
-* *reverse* - reverse an array and string.
+* *reverse* - reverse an array or string and return it.
 * *sort* - sort an array , object and return it .
 * *by* - complement of sort function | *take a callback* .
 * *linearSearch* - make a linear seach with an array .
@@ -56,7 +55,8 @@
 
 * *LowerCase()* - Transform a string in LowerCase .
 * *UpperCase()* - Transform a string in Upper case .
-* *CamelCase()* - - Transform a string in Camel case .
+* *CamelCase()* - Transform a string in Camel case .
+* *AccentToNoAccent()* - Take a string with accent as a param and return it without accent .
 
 ### Array tips
 

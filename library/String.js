@@ -1,4 +1,3 @@
-// Tips with strings
 
 // return a text in UpperCase
 const UpperCase = function (string) {
@@ -58,7 +57,7 @@ const AccentToNoAccent = function(word) {
 			'i','d','n', 'o','o','o','o','o','o','u','u','u','u','y','y','b','y');
 		
 		for(var i = 0; i < spec.length; i++) {
-			word = replaceAll(str, norm[i], spec[i]);
+			word = replaceAll(word, norm[i], spec[i]);
 		}
 
 		return word;
