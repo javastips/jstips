@@ -28,14 +28,14 @@ Array.findSum = function(arr, weight) {
     console.log( `length of the array: ${len}`); // check state
     for (let i = 0; i < len; i++) {
         var currentEl = arr[i], // looping of all elements
-            difference = weight - currentEl; 
+            difference = weight - currentEl;
             console.log(currentEl); // range
             console.log(difference); // values not inside of the range between the weigth and the array
         if (hastable[currentEl] !== undefined)  {
             return [i, hastable[weight - currentEl]];
         } else {
             hastable[difference] = i;
-        }    
+        }
     }
     return -1;
 }
@@ -51,6 +51,13 @@ Array.beginAndEndOf = function(array, begin , end) {
         }
         return partArray;
     }
+}
+
+
+Array.oneDimension = function(array) {
+  if(typeof array === "object") {
+
+  }
 }
 
 

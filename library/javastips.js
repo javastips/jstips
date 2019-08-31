@@ -4,7 +4,7 @@ const library = {}
 
 // each function , implementation of forEach .
 library.each = function(list, callback) {
-  // list : array, callback: function 
+  // list : array, callback: function
   if(Array.isArray(list)) {
     // loop through array
     for(var i = 0; i < list.length; i++){
@@ -12,7 +12,7 @@ library.each = function(list, callback) {
       callback(list[i], i, list);
     }
   } else {
-    // loop through object 
+    // loop through object
     for(var key in list) {
       //call the callback with list items
         callback(list[key], key, list);
@@ -53,9 +53,9 @@ library.easyReduce = function (array, combine, start) {
   return current;
 }
 
-// hard implementation of reduce 
+// hard implementation of reduce
 library.reduce = function(list, callback , initialValue){
-  let memo = initialValue; 
+  let memo = initialValue;
   for( var i = 0; i < list.length; i++) {
     if(i === 0 && memo === undefined)  {
       memo += list[0] ;
@@ -63,7 +63,7 @@ library.reduce = function(list, callback , initialValue){
     } else {
       memo = callback(list[i], memo)
     }
-    callback(list[i], memo) 
+    callback(list[i], memo)
   }
   return memo;
 }
@@ -84,7 +84,7 @@ library.find = function(value, inside) {
         }
       });
     }
-    // if the type of iniside is an object 
+    // if the type of iniside is an object
     else if(typeof inside === "object") {
       // we check the value with Object.values methods
       var values = Object.values(inside);
@@ -94,14 +94,14 @@ library.find = function(value, inside) {
         if(Object.is(v, value)) {
           // we find him
           finded = true;
-        } 
+        }
         finded = false;
       }
-      
+
     }
-    // if the type of iniside is a string 
+    // if the type of iniside is a string
     else if( typeof inside === "string") {
-      // we check if the is gratter than the value 
+      // we check if the is gratter than the value
       if(inside.length <= value) {
         // we log an error
         console.error("Cannot find the value , string so short");
@@ -120,11 +120,11 @@ library.find = function(value, inside) {
 }
 
 
-/* 
- * function to sort values inside an array 
+/*
+ * function to sort values inside an array
  * this function doesn't work like sort function used in es6
  * this implementatio as inspired from bubble sort .
- * 
+ *
 */
 library.sort = function (element) {
     // length of the array
@@ -148,8 +148,8 @@ library.sort = function (element) {
     return element;
 };
 
-// La fonction by prend une string comme argument et 
-// renvoie une fonction de comparaison qui peut etre utilisée pour trier 
+// La fonction by prend une string comme argument et
+// renvoie une fonction de comparaison qui peut etre utilisée pour trier
 // un tableau d'objets contenant cet argument
 
 library.by = function(name) {
@@ -167,8 +167,8 @@ library.by = function(name) {
     }
   };
 }
-  
-// Simple linear search implementation 
+
+// Simple linear search implementation
 library.linearSearch = function (array, number) {
   // size of array
   var size = array.length, position = 0;
@@ -176,7 +176,7 @@ library.linearSearch = function (array, number) {
   if(Array.isArray(array)) {
     // if an array , loop the array
     for(var i = 0; i < size; i++) {
-      // check if the number is present in the array 
+      // check if the number is present in the array
       if(array[i] == number) {
         // show true and the position in the array
        position = array[i] - 1;
@@ -186,11 +186,11 @@ library.linearSearch = function (array, number) {
     }
     // if is not present show false;
     console.log(false);
-  } // if not an array show error message 
+  } // if not an array show error message
   else {
     console.log('Wrong type ! , you need an array');
   }
-    
+
 };
 
 // function reversing element's
@@ -203,21 +203,44 @@ library.reverse =  function(character){
   return reversed;
 }
 
-// utils functions 
+// utils functions
 library.not = function(fn) {
   return function negated(...args) {
     return !fn(...args);
   };
 }
 
-// Destructuring of tips object 
-const { 
-  each , map , reduce , easyReduce, find , 
-  filter , reverse , sort, by ,  linearSearch 
-}  = library; 
+// Convert function , create a getter and setter for an object
+library.convert = function(obj) {
+  if(typeof obj === 'object') {
+    Object.keys(obj).forEach(key => {
+      let intervalValue = obj[key];
+      Object.defineProperty(obj, key.toString(), {
+        get() {
+          console.log(`init value is ${intervalValue}`);
+          return intervalValue;
+        },
+        set(newValue) {
+          intervalValue = newValue;
+          console.log(`init value is ${intervalValue} and the new is ${newValue}`);
+        },
+        enumerable: true,
+        configurable: true
+      })
+    })
+  } else {
+    return new Error(`Object ${obj} must be a object type`)
+  }
+}
 
-// export modules 
+// Destructuring of tips object
+const {
+  each , map , reduce , easyReduce, find ,
+  filter , reverse , sort, by ,  linearSearch , convert
+}  = library;
+
+// export modules
 module.exports = {
-    each , map , reduce, easyReduce , find , filter, reverse , sort , by, linearSearch 
+    each , map , reduce, easyReduce , find , filter, reverse , sort , by, linearSearch, convert
 };
 
