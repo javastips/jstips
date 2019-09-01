@@ -233,14 +233,36 @@ library.convert = function(obj) {
   }
 }
 
+const unary = function(callback) {
+  if(typeof callback === 'function') {
+    callback.length === 1 ? callback : (arg) => callback(arg);
+  } else {
+    return new Error('Argument must be a function');
+  }
+}
+
+// once function execute once something
+const once = function(fn) {
+  if(typeof fn === 'function') {
+    let done = false;
+    return function() {
+      return done ? undefined : ((done = true), fn.apply(this, arguments));
+    }
+  } else {
+    return new Error('The element must be a function declaration');
+  }
+}
+
 // Destructuring of tips object
 const {
   each , map , reduce , easyReduce, find ,
-  filter , reverse , sort, by ,  linearSearch , convert
+  filter , reverse , sort, by , not,  linearSearch , convert , once, unary
 }  = library;
 
 // export modules
 module.exports = {
-    each , map , reduce, easyReduce , find , filter, reverse , sort , by, linearSearch, convert
+  each , map , reduce, easyReduce , find ,
+  filter, reverse , sort , by, not ,linearSearch,
+  convert , once , unary
 };
 
