@@ -14,12 +14,12 @@ const LowerCase = function(string) {
 // return  a string with CamelCase
 const CamelCase = function(string) {
     if(typeof string === "string") {
-        return string.replace(/(?:^\w|[A-Z]|\b\w)/g, 
+        return string.replace(/(?:^\w|[A-Z]|\b\w)/g,
             (word, index) => index === 0 ? LowerCase(word) : UpperCase(word)
         ).replace(/\s+/g,'');
     } else {
         return new Error('Argument must be a string');
-    }    
+    }
 }
 
 
@@ -43,28 +43,68 @@ const trim = function(text) {
 	}
 }
 
-// Retrieve accent 
+// Retrieve accent
 const AccentToNoAccent = function(word) {
 	if(typeof word === "string" ) {
 		let norm = new Array('À','Á','Â','Ã','Ä','Å','Æ','Ç','È','É','Ê','Ë',
 		'Ì','Í','Î','Ï', 'Ð','Ñ','Ò','Ó','Ô','Õ','Ö','Ø','Ù','Ú','Û','Ü','Ý',
 		'Þ','ß', 'à','á','â','ã','ä','å','æ','ç','è','é','ê','ë','ì','í','î',
 		'ï','ð','ñ', 'ò','ó','ô','õ','ö','ø','ù','ú','û','ü','ý','ý','þ','ÿ');
-		
+
 		let spec = new Array('A','A','A','A','A','A','A','C','E','E','E','E',
 			'I','I','I','I', 'D','N','O','O','O','0','O','O','U','U','U','U','Y',
 			'b','s', 'a','a','a','a','a','a','a','c','e','e','e','e','i','i','i',
 			'i','d','n', 'o','o','o','o','o','o','u','u','u','u','y','y','b','y');
-		
+
 		for(var i = 0; i < spec.length; i++) {
 			word = replaceAll(word, norm[i], spec[i]);
 		}
-
 		return word;
 	} else {
 		return new Error('Argument must be a string');
 	}
-	
+}
+
+/**
+ * @param {string} string
+ * @returns {string}
+ */
+const CountWords = function(string) {
+  if(typeof string === 'string') {
+    const splitIntoSpaces = (str = string) => str.split(" ");
+    const count = (array) => array.length;
+    const compose = (a,b) => (c) => a(b(c))
+    const CountWords = compose(count, splitIntoSpaces);
+    return CountWords.call(this);
+  } else {
+    return new Error('Argument must be a string');
+  }
 }
 
 
+/**
+ * @param {string} sequence
+ * @param {number} count
+ * @param {object} options
+ */
+const randomString = function(sequence,count , options) {
+  options = options || {}
+  let result = sequence.split('').slice(0, count);
+  if(options.capitalize) {
+    result = result.map( (w) => {
+      word = `${UpperCase(word[0])} ${word.substring(1)}`
+      return word;
+    })
+    return result.join(' ');
+  }
+}
+
+module.exports = {
+  UpperCase : UpperCase,
+  CamelCase : CamelCase,
+  LowerCase: LowerCase,
+  AccentToNoAccent: AccentToNoAccent,
+  replaceAll: replaceAll,
+  CountWords: CountWords,
+  randomString: randomString
+}

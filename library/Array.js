@@ -9,16 +9,22 @@ Array.dim = function(dimension, initial) {
 
 // return the length of an element an params
 Array.LengthOf = function(element) {
+  if(Array.isArray(element)) {
     if(typeof element === "object")  return element.length;
-    else return new Error('Argument must be an array')
+    else return new Error('Argument must be an array');
+  }
 };
 
-Array.withoutDuplicate = function(array) {
+/**
+ * @param { object } array
+ */
+Array.withoutDuplicate = function (array) {
     let newArray = new Set();
-
     if(this.isArray(array)){
-        array.forEach((element, index) => newArray.add(element))
-        return newArray;
+      array.forEach((element) => newArray.add(element))
+      return newArray;
+    } else {
+      return new Error(`Argument ${array} must be an array`);
     }
 }
 
@@ -53,12 +59,28 @@ Array.beginAndEndOf = function(array, begin , end) {
     }
 }
 
-
-Array.oneDimension = function(array) {
-  if(typeof array === "object") {
-
+Array.zip = function(arr1, arr2, callback) {
+ if(typeof callback === 'function') {
+  if(arr1 && arr2 !== undefined ) {
+    let index, result = [];
+    for(index = 0 ; index < Math.min(arr1.length , arr2.length); index++) {
+      result.push(callback(arr1[index] , arr2[index]));
+    }
+    return result;
+  } else {
+    return new Error('Arguments must be an array');
   }
+ } else {
+   return new Error('last argument must be an function expression');
+ }
 }
+
+
+// Array.oneDimension = function(array) {
+//   if(typeof array === "object") {
+
+//   }
+// }
 
 
 const { dim, LengthOf } = Array;
