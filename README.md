@@ -1,17 +1,18 @@
 ![alt text](https://raw.githubusercontent.com/svngoku/JavasTips/master/js.gif)
- # JavasTips
 
- 1.[What is JavasTips](#introduction)
-   It's a library based on data stucture and problem solving algorithm in JavaScript .
+# JavasTips
+
+1.[What is JavasTips](#introduction)
+  It's a library based on data stucture and problem solving algorithm in JavaScript .
 
 2.[Why javastips](#why)
   Javastips makes your developement in javaScript easier by taking the hassle out of working with different types allowed by ecmaScript versions.
 
 3.[The purpose of JavasTips](#purpose)
-   The purpose is to understand the big black box of *functional programming* and how works different methods like `map(..) , each(...), filter(...), reduce(...) , find(...)`, and some tips .
+  The purpose is to understand the big black box of *functional programming* and how works different methods like `map(..) , each(...), filter(...), reduce(...) , find(...)`, and some tips .
 
 # Installation
-****
+
 ```bash
 > npm i javastips --save
 ```
@@ -36,7 +37,7 @@
 
    var array = [3, 2, 14, 6];
 
-   each(array, (value) => console.log(value));  /* 3 2 14 6 */
+   each(array, (value) => console.log(value)); /* 3 2 14 6 */
 ```
 
 ## Options
