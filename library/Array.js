@@ -83,8 +83,11 @@ Array.zip = function(arr1, arr2, callback) {
 // }
 
 
-const { dim, LengthOf } = Array;
+const { dim, LengthOf, withoutDuplicate } = Array;
 
 module.exports = {
-    dim , LengthOf
+  dim , LengthOf ,
+  withoutDuplicate, beginAndEndOf,
+  zip
+
 };

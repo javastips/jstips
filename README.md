@@ -4,11 +4,14 @@
  1.[What is JavasTips](#introduction)
    It's a library based on data stucture and problem solving algorithm in JavaScript .
 
-2.[The purpose of JavasTips](#purpose)
-   The purpose is to understand the big black box of data structure and how works different methods like `map(..) , each(...), filter(...), reduce(...) , find(...)`, and some tips .
+2.[Why javastips](#why)
+  Javastips makes your developement in javaScript easier by taking the hassle out of working with different types allowed by ecmaScript versions.
+
+3.[The purpose of JavasTips](#purpose)
+   The purpose is to understand the big black box of *functional programming* and how works different methods like `map(..) , each(...), filter(...), reduce(...) , find(...)`, and some tips .
 
 # Installation
-
+****
 ```bash
 > npm i javastips --save
 ```
@@ -62,6 +65,7 @@
 
 * *LengthOf()* - Return the lenght of an element | take *array* | return *number*.
 * *withoutDuplicate()* - Return an array without duplicate number | *return an array* .
+* *beginAndEndOf()* - Return value at the begin and the end of the array passed in params
 
 ## Standard
 
