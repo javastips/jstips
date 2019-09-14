@@ -1,17 +1,17 @@
 const math = {};
 
-/** 
+/**
  * Write methods on linear algebra
- * 
  */
 // addition of numbers
 math.add = function(x,y) {
-    return x + y;
+  return x + y;
 }
 
-// multiplication of numbers 
+// multiplication of numbers
 math.mult = function(x,y) {
-    return x * y;
+  if(x !== undefined || null  && y !== undefined || null ) return x * y;
+  else return 0;
 }
 
 math.substract = function(x, y) {
@@ -54,31 +54,33 @@ math.euclidean = function(oringA , originB) {
         if (a === 0 && b === 0) {
             return null;
           }
-        
+
           if (a === 0 && b !== 0) {
             return b;
           }
-        
+
           if (a !== 0 && b === 0) {
             return a;
           }
-        
+
           // Normally we need to do subtraction (a - b) but to prevent
           // recursion occurs to often we may shorten subtraction to (a % b).
           // Since (a % b) is normally means that we've subtracted b from a
           // many times until the difference became less then a.
-        
+
           if (a > b) {
             return euclidean(a % b, b);
           }
-        
+
           return euclidean(b % a, a);
     }
 }
 
 
-const { odd  , even , matrix , add , mult } = math;
+const { odd  , even , matrix , add , mult, euclidean } = math;
 
 module.exports = {
-    odd , even , add , mult , matrix
+    odd , even ,
+    add , mult ,
+    matrix , euclidean
 }

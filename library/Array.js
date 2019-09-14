@@ -8,10 +8,15 @@ Array.dim = function(dimension, initial) {
 }
 
 // return the length of an element an params
+/**
+ * @param { array } element
+ */
 Array.LengthOf = function(element) {
   if(Array.isArray(element)) {
     if(typeof element === "object")  return element.length;
-    else return new Error('Argument must be an array');
+    if(element <= 0) return 0;
+  } else {
+    return new Error('Argument must be an array');
   }
 };
 
@@ -76,14 +81,19 @@ Array.zip = function(arr1, arr2, callback) {
 }
 
 
-// Array.oneDimension = function(array) {
-//   if(typeof array === "object") {
-
+// Array.oneDimension = function(array, callback) {
+//   var newArray;
+//   if(this.isArray(array)) {
+//     return callback(newArray);
+//   } else {
+//     return new Error('Argument must be an array');
 //   }
 // }
 
 
-const { dim, LengthOf, withoutDuplicate } = Array;
+const {
+  dim, LengthOf,withoutDuplicate,
+  beginAndEndOf, zip } = Array;
 
 module.exports = {
   dim , LengthOf ,

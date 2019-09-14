@@ -53,23 +53,40 @@ library.easyReduce = function (array, combine, start) {
   return current;
 }
 
-// hard implementation of reduce
+/**
+ * @param { object } list
+ * @param { function } callback
+ * @param { number } intiValue
+ * @function implementation of reduce function
+ * @return number
+ *
+ */
 library.reduce = function(list, callback , initialValue){
   let memo = initialValue;
-  for( var i = 0; i < list.length; i++) {
-    if(i === 0 && memo === undefined)  {
-      memo += list[0] ;
-      i++;
-    } else {
-      memo = callback(list[i], memo)
+  if(Array.isArray(list)) {
+    for( var i = 0; i < list.length; i++) {
+      if(i === 0 && memo === undefined)  {
+        memo += list[0] ;
+        i++;
+      } else {
+        memo = callback(list[i], memo)
+      }
+      callback(list[i], memo)
     }
-    callback(list[i], memo)
+    return memo;
+  } else {
+    return new Error('Argument must be an array');
   }
-  return memo;
+
 }
 
 
 // find function , help us to ifn a value, inside an array , an object or an string
+/**
+ * @param { number | string } value
+ * @param { number | string  } inside
+ * @return  boolean
+ */
 library.find = function(value, inside) {
     var finded;
     // if inside it's an array
@@ -120,11 +137,11 @@ library.find = function(value, inside) {
 }
 
 
-/*
+/**
+ * @param { object } element
  * function to sort values inside an array
  * this function doesn't work like sort function used in es6
  * this implementatio as inspired from bubble sort .
- *
 */
 library.sort = function (element) {
     // length of the array
@@ -152,18 +169,18 @@ library.sort = function (element) {
 // renvoie une fonction de comparaison qui peut etre utilisée pour trier
 // un tableau d'objets contenant cet argument
 
-library.by = function(name) {
+library.by = function(element) {
   return function(o,p) {
     var a , b;
     if(typeof o === 'object' && typeof p === 'object' && o && p) {
-      a = o[name] ; b = p[name];
+      a = o[element] ; b = p[element];
       if(a === b) { return 0 }
       if(typeof a === typeof b) {
         return a < b ? -1 : 1;
       }
       return typeof a < typeof b ? -1 : 1;
     } else {
-      return new Error(`Exepected an object when sorting by ${name}`);
+      return new Error(`Exepected an object when sorting by ${element}`);
     }
   };
 }
@@ -233,7 +250,7 @@ library.convert = function(obj) {
   }
 }
 
-const unary = function(callback) {
+library.unary = function(callback) {
   if(typeof callback === 'function') {
     callback.length === 1 ? callback : (arg) => callback(arg);
   } else {
@@ -242,7 +259,7 @@ const unary = function(callback) {
 }
 
 // once function execute once something
-const once = function(fn) {
+library.once = function(fn) {
   if(typeof fn === 'function') {
     let done = false;
     return function() {

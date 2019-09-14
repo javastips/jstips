@@ -1,5 +1,4 @@
-const tips = require('./javastips');
-
+const tips = require('./bundle');
 
 // Using each method
 tips.each(['Bianca', 'Pamela', 'Jessica'], function(name,i, list) { // BIANCA 0
@@ -10,7 +9,7 @@ tips.each(['Bianca', 'Pamela', 'Jessica'], function(name,i, list) { // BIANCA 0
     }
 });
 // Using reduce method
-console.log(tips.reduce([1,2,3,4], function(a, b) { return  a + b }, 0)) // Start at 0, sum 10
+console.log(tips.reduce([1,2,3,4], (a, b) => a + b, 0)) // Start at 0, sum 10
 
 // Applying easy reduce methods
 console.log(tips.easyReduce([1,2,3,4], function(v, sum) { return  v + sum}, 1)); // Start at 1 ,sum = 11
@@ -58,5 +57,5 @@ var obj = {
 }
 tips.convert(obj)
 
-console.log(obj.name = "Nelson")
-
+var arr = [1, 3, 4, [3, 5] ];
+console.log(arr.values)
