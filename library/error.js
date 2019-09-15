@@ -1,24 +1,21 @@
-class TipsError extends Error {
-  constructor() {
-    super();
-  }
-
-  /**
-   * @returns { string }
-   */
-  functionError() {
-    console.log(
-      this.name = 'Function error',
-      this.message = `Argument must be  function`
-    )
+class TypeError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'TypeError';
   }
 }
 
 
-var _ = new TipsError();
+class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
 
-_.functionError();
 
 
-
-
+module.exports = {
+  TypeError,
+  ValidationError
+}

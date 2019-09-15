@@ -2,6 +2,7 @@ const _tips = require('./javastips');
 const _string = require('./String');
 const _array = require('./Array');
 const _boolean = require('./Boolean');
+const _convertion = require('./convert');
 
 const {
   each , map , reduce, easyReduce , find ,
@@ -33,6 +34,8 @@ const {
   isEmpty
 } = _boolean
 
+const { Floatify } = _convertion
+
 
 
 module.exports = {
@@ -59,12 +62,13 @@ module.exports = {
   randomString,
   dim ,
   LengthOf ,
-  withoutDuplicate, 
+  withoutDuplicate,
   beginAndEndOf,
   zip,
   isShortThan,
   isNumeric,
-  isEmpty
+  isEmpty,
+  Floatify
 }
 
 
