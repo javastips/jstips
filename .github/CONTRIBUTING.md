@@ -1,6 +1,6 @@
 # 🚧 Notice 🚧
 
-Pardon the mess. The `master` branch is in flux while we work on Lodash v5. This
+Pardon the mess. The `master` branch is in flux while we work on javastips v1. This
 means things like npm scripts, which we encourage using for contributions, may
 not be working. Thank you for your patience.
 
@@ -37,7 +37,7 @@ established in the code.
 
 - **Naming**:<br>
   Keep variable & method names concise & descriptive.<br>
-  Variable names `index`, `array`, & `iteratee` are preferable to
+  Variable names `index`, `array`, & `iterate` are preferable to
   `i`, `arr`, & `fn`.
 
 - **Quotes**:<br>
@@ -52,7 +52,7 @@ established in the code.
 
 Guidelines are enforced using [ESLint](https://www.npmjs.com/package/eslint):
 ```bash
-$ npm run style
+  $ npm run style
 ```
 
 ## Tips
