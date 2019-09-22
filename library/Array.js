@@ -1,10 +1,14 @@
 // Dimensions
 Array.dim = function(dimension, initial) {
-    var a = [];
-    for(var i = 0; i < dimension; i++) {
+    if(typeof dimension === "number" && typeof initial === "number") {
+      var a = new Array();
+      for(var i = 0; i < dimension; i++) {
         a[i] = initial;
+      }
+      return a;
+    } else {
+      return TypeError("Invalid arguments");
     }
-    return a;
 }
 
 // return the length of an element an params
@@ -81,6 +85,31 @@ Array.zip = function(arr1, arr2, callback) {
 }
 
 
+Array.maxValue = function(array) {
+  if(this.isArray(array)) {
+    if(array.length < 0) {
+      return array;
+    } else {
+      return Math.max(...array);
+    }
+  } else {
+    return new Error('Argument must be an Array');
+  }
+}
+
+Array.minValue = function(array) {
+  if(this.isArray(array)) {
+    if(array.length < 0) {
+      return array;
+    } else {
+      return Math.min(...array);
+    }
+  } else {
+    return new Error('Argument must be an Array');
+  }
+}
+
+
 // Array.oneDimension = function(array, callback) {
 //   var newArray;
 //   if(this.isArray(array)) {
@@ -93,11 +122,12 @@ Array.zip = function(arr1, arr2, callback) {
 
 const {
   dim, LengthOf,withoutDuplicate,
-  beginAndEndOf, zip } = Array;
+  beginAndEndOf, zip, minValue , maxValue } = Array;
 
 module.exports = {
   dim , LengthOf ,
   withoutDuplicate, beginAndEndOf,
-  zip
+  zip, minValue,
+  maxValue
 
 };
