@@ -1,4 +1,3 @@
-// tools for debugging code
 /**
  * @param {string} mode
  * @param {string} initMessage
@@ -17,6 +16,24 @@ const loggerHelper = function(mode,initMessage, errorMessage, Nline) {
     return new Error('Wrong mode for your debugging');
   }
 }
+
+/**
+ * 
+ * @param { function } fnc 
+ * @param {string} name 
+ */
+const TimeOfRunning = function(fnc, name) {
+  if(typeof fnc === "function" && typeof name === "string") {
+    (function() {
+      console.time(`${name}`);
+      fnc();
+      console.timeEnd(`${name}`);
+    })();
+  } else {
+    return new TypeError('Arguments errors');
+  }
+}
+
 
 
 

@@ -142,6 +142,9 @@ library.sort = function (element) {
 // renvoie une fonction de comparaison qui peut etre utilisée pour trier
 // un tableau d'objets contenant cet argument
 
+/**
+ * @param { string } element
+ */
 library.by = function(element) {
   return function(o,p) {
     var a , b;
@@ -159,6 +162,10 @@ library.by = function(element) {
 }
 
 // Simple linear search implementation
+/**
+ * @param { [number] } array
+ * @param { number } number
+ */
 library.linearSearch = function (array, number) {
   var size = array.length, position = 0;
   if(Array.isArray(array)) {
@@ -177,9 +184,12 @@ library.linearSearch = function (array, number) {
 
 };
 
-// function reversing element's
+/**
+ * @param { string | [number] } character
+ * @returns { object } reversed
+ */
 library.reverse =  function(character){
-  var reversed = [], len = character.length;
+  let reversed = [], len = character.length;
   for(var i = len - 1; i >= 0; i--) {
     reversed.push(character[i]);
   }
@@ -187,7 +197,10 @@ library.reverse =  function(character){
   return reversed;
 }
 
-// utils functions
+/**
+ * @param { function } fn
+ * @returns { function } negated expression of the function
+ */
 library.not = function(fn) {
   return function negated(...args) {
     return !fn(...args);
@@ -217,6 +230,10 @@ library.convert = function(obj) {
   }
 }
 
+/**
+ * @param { function } callback
+ * @returns { function }
+ */
 library.unary = function(callback) {
   if(typeof callback === 'function') {
     callback.length === 1 ? callback : (arg) => callback(arg);
@@ -225,7 +242,13 @@ library.unary = function(callback) {
   }
 }
 
-// once function execute once something
+/** 
+ * @param { function } fn
+ * @returns { string | boolean }
+ * Accepts a function fn and returns a function that guards 
+ * invocation of fn such that fn can only ever be called once, 
+ * no matter how many times the returned function is invoked.
+ */
 library.once = function(fn) {
   if(typeof fn === 'function') {
     let done = false;
@@ -237,6 +260,11 @@ library.once = function(fn) {
   }
 }
 
+/**
+ * @param { number | string  } value
+ * @param { object | string } elements
+ * @return array | number 
+ */
 library.take = function(value, elements) {
   let taked = Array();
   let count = elements.length;
@@ -253,7 +281,15 @@ library.take = function(value, elements) {
     return new TypeError('Invalid arguments');
   }
 }
-console.log(library.take(0, 'ramda'))
+
+
+library.type = function(param) {
+  while(param) {
+    return typeof param;
+  }
+  return ;
+}
+
 
 // Destructuring of tips object
 const {
