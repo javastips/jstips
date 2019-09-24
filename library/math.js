@@ -1,27 +1,50 @@
 const math = {};
 
 /**
- * Write methods on linear algebra
+ * @param { number } x
+ * @param { number } y
+ * Addition deux valeurs
  */
-// addition of numbers
 math.add = function(x,y) {
-  return x + y;
+  while(x && y ) {
+    if(typeof x === "number" && typeof y === "number" ) {
+      if(x !== undefined && y !== undefined || x !== null && y !== null ) {
+        return x + y;
+      } else {
+        return new TypeError('Argument must be different of null or undefined');
+      }
+    } else {
+      return new TypeError('Argument must be a number');
+    }
+  }
 }
 
-// multiplication of numbers
+/**
+ * @param { number } x
+ * @param { number } y
+ * multiplie deux valeurs
+ */
 math.mult = function(x,y) {
   if(x !== undefined || null  && y !== undefined || null ) return x * y;
   else return 0;
 }
 
+/**
+ * @param { number } x
+ * @param { number } y
+ * Soustrait deux valeurs
+ */
 math.substract = function(x, y) {
   if(typeof x === "number" && typeof y === "number") {
-      return x - y;
+    return x - y;
   } else {
-      return new Error('Arguments must a numbers')
+    return new Error('Arguments must a numbers')
   }
 }
 
+/**
+ * @param { number } value
+ */
 math.odd = function(value) {
   if(typeof value === "number") {
     if(value !== 0) {
@@ -34,6 +57,10 @@ math.odd = function(value) {
   }
 }
 
+
+/**
+ * @param { number } value
+ */
 math.even = function (value) {
   while(typeof value === 'number') {
     if(value === 0) {
@@ -45,7 +72,7 @@ math.even = function (value) {
 }
 
 math.matrix = function(m, n , initial) {
-  var a , i , j, mat = [];
+  let a , i , j, mat = [];
   for (i = 0; i < m; i++) {
         a = [];
         for (j = 0; j < n; j++) {
@@ -59,7 +86,7 @@ math.matrix = function(m, n , initial) {
 /**
  * @param {number} originalA
  * @param {number} originalB
- * @return {number|null}
+ * @returns
  */
 math.euclidean = function(oringA , originB) {
   const a = Math.abs(oringA);

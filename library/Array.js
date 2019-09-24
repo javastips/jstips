@@ -1,8 +1,11 @@
-// Dimensions
+/**
+ * @param { number } dimension
+ * @param { number } initial
+ */
 Array.dim = function(dimension, initial) {
     if(typeof dimension === "number" && typeof initial === "number") {
-      var a = new Array();
-      for(var i = 0; i < dimension; i++) {
+      let a = new Array();
+      for(let i = 0; i < dimension; i++) {
         a[i] = initial;
       }
       return a;
@@ -25,9 +28,9 @@ Array.LengthOf = function(element) {
 };
 
 /**
- * @param { object } array
+ * @param { [number] } array
  */
-Array.withoutDuplicate = function (array) {
+Array.withoutDuplicate = function(array) {
     let newArray = new Set();
     if(this.isArray(array)){
       array.forEach((element) => newArray.add(element))
@@ -38,18 +41,18 @@ Array.withoutDuplicate = function (array) {
 }
 
 Array.findSum = function(arr, weight) {
-    var hastable = {};
-    var len = Array.LengthOf(arr); // lenght of the array
-    console.log( `length of the array: ${len}`); // check state
+    let hastable = {};
+    let len = Array.LengthOf(arr); // lenght of the array
+    // console.log( `length of the array: ${len}`); // check state
     for (let i = 0; i < len; i++) {
-        var currentEl = arr[i], // looping of all elements
+        let currentEl = arr[i], // looping of all elements
             difference = weight - currentEl;
-            console.log(currentEl); // range
-            console.log(difference); // values not inside of the range between the weigth and the array
+            // console.log(currentEl); // range
+            // console.log(difference); // values not inside of the range between the weigth and the array
         if (hastable[currentEl] !== undefined)  {
-            return [i, hastable[weight - currentEl]];
+          return [i, hastable[weight - currentEl]];
         } else {
-            hastable[difference] = i;
+          hastable[difference] = i;
         }
     }
     return -1;
@@ -84,7 +87,9 @@ Array.zip = function(arr1, arr2, callback) {
  }
 }
 
-
+/**
+ * @param { [number] } array
+ */
 Array.maxValue = function(array) {
   if(this.isArray(array)) {
     if(array.length < 0) {
@@ -96,7 +101,9 @@ Array.maxValue = function(array) {
     return new Error('Argument must be an Array');
   }
 }
-
+/**
+ * @param { [number] } array
+ */
 Array.minValue = function(array) {
   if(this.isArray(array)) {
     if(array.length < 0) {
@@ -109,6 +116,32 @@ Array.minValue = function(array) {
   }
 }
 
+/**
+ * @param { string | number } value
+ * @param { [number] } array
+ * @returns {[number] | [string]}
+ * Returns a new list containing the contents of the given list, 
+ * followed by the given element.
+ */
+Array.append = function(value, array) {
+  var newArray = array;
+  if(value !== undefined && value !== null) {
+    if(this.isArray(array)) {
+      newArray.push(value);
+      return newArray;
+    } else {
+      return new TypeError(`Argument ${array} must be an array`);
+    }
+  } else {
+    return new Error('Wrong type for your value');
+  }
+}
+
+// Array.union = function(first, second) {
+//   if(this.isArray(first) && this.isArray(second)) {
+
+//   }
+// }
 
 // Array.oneDimension = function(array, callback) {
 //   var newArray;
@@ -121,13 +154,14 @@ Array.minValue = function(array) {
 
 
 const {
-  dim, LengthOf,withoutDuplicate,
-  beginAndEndOf, zip, minValue , maxValue } = Array;
+  dim, LengthOf
+  ,withoutDuplicate, beginAndEndOf, 
+  zip, minValue, 
+  maxValue, append} = Array;
 
 module.exports = {
   dim , LengthOf ,
   withoutDuplicate, beginAndEndOf,
   zip, minValue,
-  maxValue
-
+  maxValue, append
 };

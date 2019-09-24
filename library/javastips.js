@@ -2,7 +2,11 @@
 
 const library = {}
 
-// each function , implementation of forEach .
+/**
+ * @param { [number]} list
+ * @param { function } callback
+ * Iterate over an input list, calling a provided function fn for each element in the list.
+ */
 library.each = function(list, callback) {
   if(Array.isArray(list)) {
     for(var i = 0; i < list.length; i++){
@@ -15,7 +19,13 @@ library.each = function(list, callback) {
   }
 };
 
-// map function , implementation of map .
+/**
+  * @param { [number]} list
+ * @param { function } callback
+ * @returns Takes a function and a functor, 
+ * applies the function to each of the functor's values, 
+ * and returns a functor of the same shape.
+ */
 library.map = function(list, callback) {
    var storage = [];
    library.each(list, function(v,i, list) {
@@ -33,7 +43,16 @@ library.filter = function(array, callback) {
   return store;
 }
 
-// second implementation of reduce with es6 syntax
+/**
+ * @param { [ number ]} array
+ * @param { function } combine
+ * @param { number } start
+ * @returns 
+ * Returns a single item by iterating through the list, 
+ * successively calling the iterator function and passing 
+ * it an accumulator value and the current value from the array, 
+ * and then passing the result to the next call.
+ */
 library.easyReduce = function (array, combine, start) {
   let current = start;
   for(let element of array) {
@@ -43,7 +62,7 @@ library.easyReduce = function (array, combine, start) {
 }
 
 /**
- * @param { object } list
+ * @param { [number] } list
  * @param { function } callback
  * @param { number } intiValue
  * @function implementation of reduce function
@@ -138,12 +157,16 @@ library.sort = function (element) {
     return element;
 };
 
-// La fonction by prend une string comme argument et
-// renvoie une fonction de comparaison qui peut etre utilisée pour trier
-// un tableau d'objets contenant cet argument
+
 
 /**
  * @param { string } element
+ * @returns
+ * La fonction by prend une string comme argument et
+ *  renvoie une fonction de comparaison qui peut etre utilisée pour trier
+ * un tableau d'objets contenant cet argument
+ * 
+ * Par : Douglas Crofford.
  */
 library.by = function(element) {
   return function(o,p) {
@@ -199,7 +222,7 @@ library.reverse =  function(character){
 
 /**
  * @param { function } fn
- * @returns { function } negated expression of the function
+ * @returns { function } A function that returns the negation of a  function. 
  */
 library.not = function(fn) {
   return function negated(...args) {
@@ -207,7 +230,12 @@ library.not = function(fn) {
   };
 }
 
-// Convert function , create a getter and setter for an object
+/**
+ * @param { object } obj
+ * @returns 
+ * Take an object and convert it by assign a get and set
+ * to this object
+ */
 library.convert = function(obj) {
   if(typeof obj === 'object') {
     Object.keys(obj).forEach(key => {
@@ -233,6 +261,9 @@ library.convert = function(obj) {
 /**
  * @param { function } callback
  * @returns { function }
+ * Wraps a function of any arity 
+ * (including nullary) in a function that accepts exactly 1 parameter. 
+ * Any extraneous parameters will not be passed to the supplied function.
  */
 library.unary = function(callback) {
   if(typeof callback === 'function') {
@@ -262,8 +293,10 @@ library.once = function(fn) {
 
 /**
  * @param { number | string  } value
- * @param { object | string } elements
- * @return array | number 
+ * @param { [number] | [string] } elements
+ * @returns {[number]} 
+ * Returns the first n elements of the given list, string,  
+ * (or object with a take method)
  */
 library.take = function(value, elements) {
   let taked = Array();
@@ -282,8 +315,14 @@ library.take = function(value, elements) {
   }
 }
 
-
-library.type = function(param) {
+/**
+ * @returns
+ * Gives a single-word string description of the (native) type of a value, 
+ * returning such answers as 'Object', 'Number', 'Array', or 'Null'. 
+ * Does not attempt to distinguish user Object types any further, 
+ * reporting them all as 'Object'.
+ */
+library.DefType = function(param) {
   while(param) {
     return typeof param;
   }
@@ -294,13 +333,15 @@ library.type = function(param) {
 // Destructuring of tips object
 const {
   each , map , reduce , easyReduce, find ,
-  filter , reverse , sort, by , not,  linearSearch , convert , once, unary
+  filter , reverse , sort, by , not,  
+  linearSearch , convert , once, unary,
+  take, DefType
 }  = library;
 
 // export modules
 module.exports = {
   each , map , reduce, easyReduce , find ,
   filter, reverse , sort , by, not ,linearSearch,
-  convert , once , unary
+  convert , once , unary,take, DefType
 };
 

@@ -1,17 +1,29 @@
 
-// return a text in UpperCase
+/**
+ * 
+ * @param {string} string 
+ * @returns Convert a string in UpperCase
+ */
 const UpperCase = function (string) {
     if(typeof string !== "string") return new Error('Argument must be a string ');
     else return string.toUpperCase();
 }
 
-// return a string in LowerCase
+/**
+ * 
+ * @param {string} string 
+ * @returns Convert a string in LowerCase
+ */
 const LowerCase = function(string) {
     if(typeof string !== "string") return new Error('Argument must be a string ');
     else return string.toLowerCase();
 }
 
-// return  a string with CamelCase
+/**
+ * 
+ * @param {string} string 
+ * @returns Convert a string in CamelCase
+ */
 const CamelCase = function(string) {
     if(typeof string === "string") {
         return string.replace(/(?:^\w|[A-Z]|\b\w)/g,
@@ -43,7 +55,11 @@ const trim = function(text) {
 	}
 }
 
-// Retrieve accent
+/**
+ * 
+ * @param {string} word 
+ * @returns R a string in UpperCase
+ */
 const AccentToNoAccent = function(word) {
 	if(typeof word === "string" ) {
 		let norm = new Array('À','Á','Â','Ã','Ä','Å','Æ','Ç','È','É','Ê','Ë',
