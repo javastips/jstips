@@ -57,5 +57,3 @@ var obj = {
 }
 tips.convert(obj)
 
-var arr = [1, 3, 4, [3, 5] ];
-console.log(arr.values)
