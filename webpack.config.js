@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const { resolve } = require('path');
 
 module.exports = {
@@ -5,5 +6,10 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: resolve(__dirname, "dist")
-  }
+  },
+  'plugins': [
+    new webpack.optimize.UglifyJsPlugin
+  ],
+  watch: true,
+
 };
