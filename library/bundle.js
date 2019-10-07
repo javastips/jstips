@@ -1,8 +1,10 @@
+const _algorithm = require('./algorithem');
 const _tips = require('./javastips');
 const _string = require('./String');
 const _array = require('./Array');
 const _boolean = require('./Boolean');
 const _convertion = require('./convert');
+
 
 const {
   each , map , reduce, easyReduce , find ,
@@ -37,6 +39,8 @@ const {
 const { Floatify } = _convertion
 
 
+const { BoyerMooreHorspool } = _algorithm
+
 
 module.exports = {
   each ,
@@ -68,7 +72,8 @@ module.exports = {
   isShortThan,
   isNumeric,
   isEmpty,
-  Floatify
+  Floatify,
+  BoyerMooreHorspool
 }
 
 

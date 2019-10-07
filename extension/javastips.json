@@ -33,6 +33,7 @@
     "prefix": "by",
     "body": "by('$1')",
     "description": "The function by takes a string as argument and returns a comparison function that can be used to sort an array of objects containing this argument"
-  }
+  },
+  
 
 }

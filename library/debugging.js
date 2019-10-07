@@ -18,9 +18,8 @@ const loggerHelper = function(mode,initMessage, errorMessage, Nline) {
 }
 
 /**
- * 
- * @param { function } fnc 
- * @param {string} name 
+ * @param { function } fnc
+ * @param {string} name
  */
 const TimeOfRunning = function(fnc, name) {
   if(typeof fnc === "function" && typeof name === "string") {

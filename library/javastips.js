@@ -21,10 +21,10 @@ library.each = function(list, callback) {
 
 /**
   * @param { [number]} list
- * @param { function } callback
- * @returns Takes a function and a functor, 
- * applies the function to each of the functor's values, 
- * and returns a functor of the same shape.
+  * @param { function } callback
+  * @returns Takes a function and a functor,
+  * applies the function to each of the functor's values,
+  * and returns a functor of the same shape.
  */
 library.map = function(list, callback) {
    var storage = [];
@@ -47,10 +47,10 @@ library.filter = function(array, callback) {
  * @param { [ number ]} array
  * @param { function } combine
  * @param { number } start
- * @returns 
- * Returns a single item by iterating through the list, 
- * successively calling the iterator function and passing 
- * it an accumulator value and the current value from the array, 
+ * @returns
+ * Returns a single item by iterating through the list,
+ * successively calling the iterator function and passing
+ * it an accumulator value and the current value from the array,
  * and then passing the result to the next call.
  */
 library.easyReduce = function (array, combine, start) {
@@ -96,7 +96,7 @@ library.reduce = function(list, callback , initialValue){
  * @return  boolean
  */
 library.find = function(value, inside) {
-    var finded;
+    let finded;
     if(Array.isArray(inside)) {
       var looping = this.each(inside, (v) => {
         if(v === value) {
@@ -165,7 +165,7 @@ library.sort = function (element) {
  * La fonction by prend une string comme argument et
  *  renvoie une fonction de comparaison qui peut etre utilisée pour trier
  * un tableau d'objets contenant cet argument
- * 
+ *
  * Par : Douglas Crofford.
  */
 library.by = function(element) {
@@ -222,7 +222,7 @@ library.reverse =  function(character){
 
 /**
  * @param { function } fn
- * @returns { function } A function that returns the negation of a  function. 
+ * @returns { function } A function that returns the negation of a  function.
  */
 library.not = function(fn) {
   return function negated(...args) {
@@ -232,7 +232,7 @@ library.not = function(fn) {
 
 /**
  * @param { object } obj
- * @returns 
+ * @returns
  * Take an object and convert it by assign a get and set
  * to this object
  */
@@ -261,8 +261,8 @@ library.convert = function(obj) {
 /**
  * @param { function } callback
  * @returns { function }
- * Wraps a function of any arity 
- * (including nullary) in a function that accepts exactly 1 parameter. 
+ * Wraps a function of any arity
+ * (including nullary) in a function that accepts exactly 1 parameter.
  * Any extraneous parameters will not be passed to the supplied function.
  */
 library.unary = function(callback) {
@@ -273,11 +273,11 @@ library.unary = function(callback) {
   }
 }
 
-/** 
+/**
  * @param { function } fn
  * @returns { string | boolean }
- * Accepts a function fn and returns a function that guards 
- * invocation of fn such that fn can only ever be called once, 
+ * Accepts a function fn and returns a function that guards
+ * invocation of fn such that fn can only ever be called once,
  * no matter how many times the returned function is invoked.
  */
 library.once = function(fn) {
@@ -294,8 +294,8 @@ library.once = function(fn) {
 /**
  * @param { number | string  } value
  * @param { [number] | [string] } elements
- * @returns {[number]} 
- * Returns the first n elements of the given list, string,  
+ * @returns {[number]}
+ * Returns the first n elements of the given list, string,
  * (or object with a take method)
  */
 library.take = function(value, elements) {
@@ -317,9 +317,9 @@ library.take = function(value, elements) {
 
 /**
  * @returns
- * Gives a single-word string description of the (native) type of a value, 
- * returning such answers as 'Object', 'Number', 'Array', or 'Null'. 
- * Does not attempt to distinguish user Object types any further, 
+ * Gives a single-word string description of the (native) type of a value,
+ * returning such answers as 'Object', 'Number', 'Array', or 'Null'.
+ * Does not attempt to distinguish user Object types any further,
  * reporting them all as 'Object'.
  */
 library.DefType = function(param) {
@@ -333,7 +333,7 @@ library.DefType = function(param) {
 // Destructuring of tips object
 const {
   each , map , reduce , easyReduce, find ,
-  filter , reverse , sort, by , not,  
+  filter , reverse , sort, by , not,
   linearSearch , convert , once, unary,
   take, DefType
 }  = library;

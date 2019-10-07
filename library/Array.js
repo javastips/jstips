@@ -89,6 +89,8 @@ Array.zip = function(arr1, arr2, callback) {
 
 /**
  * @param { [number] } array
+ * @returns { number }
+ * Retuern the value max inside an array
  */
 Array.maxValue = function(array) {
   if(this.isArray(array)) {
@@ -120,7 +122,7 @@ Array.minValue = function(array) {
  * @param { string | number } value
  * @param { [number] } array
  * @returns {[number] | [string]}
- * Returns a new list containing the contents of the given list, 
+ * Returns a new list containing the contents of the given list,
  * followed by the given element.
  */
 Array.append = function(value, array) {
@@ -153,10 +155,12 @@ Array.append = function(value, array) {
 // }
 
 
+
+
 const {
   dim, LengthOf
-  ,withoutDuplicate, beginAndEndOf, 
-  zip, minValue, 
+  ,withoutDuplicate, beginAndEndOf,
+  zip, minValue,
   maxValue, append} = Array;
 
 module.exports = {

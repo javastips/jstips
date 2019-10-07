@@ -7,6 +7,8 @@
  * @param {string } needle
  * @param {string } haystack
  * @returns { number } position
+ * The BoyerMooreHorspool it's a algorithm
+ * for searching with a time of complexity of O(n)2
  */
 const BoyerMooreHorspool = function(needle, haystack) {
   let skip = 0; // init position
@@ -32,3 +34,8 @@ const BoyerMooreHorspool = function(needle, haystack) {
   return -1;
 }
 
+
+
+module.exports = {
+  BoyerMooreHorspool
+}

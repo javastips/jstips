@@ -12,18 +12,6 @@ httpUrl.GetURLParameter = function(sParam){
     }
 }
 
-httpUrl.post = function(datas, callback) {
-  if(typeof datas === "object") {
-    // parsing data to json
-
-    // callback take req and res
-      // return it with status
-        // if status === 200
-          // post data
-        // else
-          // return res with an error
-  }
-}
 const { GetURLParameter } = httpUrl;
 
 module.exports = {
