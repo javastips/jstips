@@ -2,14 +2,13 @@ const webpack = require('webpack')
 const { resolve } = require('path');
 
 module.exports = {
+  mode: "development",
   entry: 'library/bundle.js',
   output: {
-    filename: 'main.js',
-    path: resolve(__dirname, "dist")
+    path: resolve(__dirname, "dist"),
+    filename: 'webpack-bundle.js',
   },
-  'plugins': [
-    new webpack.optimize.UglifyJsPlugin
-  ],
-  watch: true,
-
+  resolve: {
+    extensions: [".js"]
+  },
 };
