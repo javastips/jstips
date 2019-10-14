@@ -17,6 +17,7 @@ const isEmpty = function(value) {
 
 /**
  * @param {number} argument
+ * @returns { boolean }
  */
 const isNumeric = function(argument) {
   if(typeof argument === 'number') {

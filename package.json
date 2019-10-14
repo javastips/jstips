@@ -1,4 +1,15 @@
 {
+  "name": "javastips",
+  "version": "1.0.2",
+  "main": "library/bundle.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svngoku/JavasTips.git"
+  },
+  "keywords":[
+    "javastips"
+  ],
+  "author": "Svngoku"
     "name": "javastips",
     "version": "1.0.3",
     "main": "library/bundle.js",

@@ -7,6 +7,7 @@
  * and parse the value to float.
  * The position is the statement of the number of 0 before
  * the value
+
  */
 const Floatify = function(value, position = 1) {
   if(typeof value === "number" && typeof position === "number" || typeof value === "string") {
