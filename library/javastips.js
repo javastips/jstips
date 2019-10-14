@@ -2,49 +2,57 @@
 
 const library = {}
 
-// each function , implementation of forEach .
+/**
+ * @param { [number]} list
+ * @param { function } callback
+ * Iterate over an input list, calling a provided function fn for each element in the list.
+ */
 library.each = function(list, callback) {
-  // list : array, callback: function
   if(Array.isArray(list)) {
-    // loop through array
     for(var i = 0; i < list.length; i++){
-      // Call the callback with a list item
       callback(list[i], i, list);
     }
   } else {
-    // loop through object
     for(var key in list) {
-      //call the callback with list items
-        callback(list[key], key, list);
+      callback(list[key], key, list);
     }
   }
 };
 
-// map function , implementation of map .
+/**
+  * @param { [number]} list
+  * @param { function } callback
+  * @returns Takes a function and a functor,
+  * applies the function to each of the functor's values,
+  * and returns a functor of the same shape.
+ */
 library.map = function(list, callback) {
-    // create an empty array to store
    var storage = [];
    library.each(list, function(v,i, list) {
       storage.push(callback(v, i, list));
    });
-   // return []
    return storage;
 };
 
 // filter array
 library.filter = function(array, callback) {
-  // create a new array
   var store = [];
-  // loop through the array
   library.each(array, function(item, i, list) {
-    // check if callback return true
     if(callback(item, i,list)) store.push(item);
   });
-  //return array
   return store;
 }
 
-// second implementation of reduce with es6 syntax
+/**
+ * @param { [ number ]} array
+ * @param { function } combine
+ * @param { number } start
+ * @returns
+ * Returns a single item by iterating through the list,
+ * successively calling the iterator function and passing
+ * it an accumulator value and the current value from the array,
+ * and then passing the result to the next call.
+ */
 library.easyReduce = function (array, combine, start) {
   let current = start;
   for(let element of array) {
@@ -54,7 +62,7 @@ library.easyReduce = function (array, combine, start) {
 }
 
 /**
- * @param { object } list
+ * @param { [number] } list
  * @param { function } callback
  * @param { number } intiValue
  * @function implementation of reduce function
@@ -88,12 +96,9 @@ library.reduce = function(list, callback , initialValue){
  * @return  boolean
  */
 library.find = function(value, inside) {
-    var finded;
-    // if inside it's an array
+    let finded;
     if(Array.isArray(inside)) {
-      // we loop it with the eaxh method
       var looping = this.each(inside, (v) => {
-        // we compared them
         if(v === value) {
           finded = true;
         } else {
@@ -101,35 +106,22 @@ library.find = function(value, inside) {
         }
       });
     }
-    // if the type of iniside is an object
     else if(typeof inside === "object") {
-      // we check the value with Object.values methods
       var values = Object.values(inside);
-      // we loop through the values
       for( let v of values) {
-        // and if values as similair with the value params
         if(Object.is(v, value)) {
-          // we find him
           finded = true;
         }
         finded = false;
       }
-
     }
-    // if the type of iniside is a string
     else if( typeof inside === "string") {
-      // we check if the is gratter than the value
       if(inside.length <= value) {
-        // we log an error
         console.error("Cannot find the value , string so short");
       } else {
-        // else we split the sentence inside an array
         var classifier = inside.split(' ')
-        // filter the sentence by cacthing the great value
             .filter(v => v === value);
-        // and if this two value macth we initialise finded to true
         if(classifier == value) finded = true;
-        // else to false
         else finded = false;
       }
     }
@@ -165,10 +157,17 @@ library.sort = function (element) {
     return element;
 };
 
-// La fonction by prend une string comme argument et
-// renvoie une fonction de comparaison qui peut etre utilisée pour trier
-// un tableau d'objets contenant cet argument
 
+
+/**
+ * @param { string } element
+ * @returns
+ * La fonction by prend une string comme argument et
+ *  renvoie une fonction de comparaison qui peut etre utilisée pour trier
+ * un tableau d'objets contenant cet argument
+ *
+ * Par : Douglas Crofford.
+ */
 library.by = function(element) {
   return function(o,p) {
     var a , b;
@@ -186,33 +185,34 @@ library.by = function(element) {
 }
 
 // Simple linear search implementation
+/**
+ * @param { [number] } array
+ * @param { number } number
+ */
 library.linearSearch = function (array, number) {
-  // size of array
   var size = array.length, position = 0;
-  //check if the array it's really an array
   if(Array.isArray(array)) {
-    // if an array , loop the array
     for(var i = 0; i < size; i++) {
-      // check if the number is present in the array
       if(array[i] == number) {
-        // show true and the position in the array
        position = array[i] - 1;
         console.log(`L'élément ce situe à la position ${position} du tableau .`);
         return ;
       }
     }
-    // if is not present show false;
     console.log(false);
-  } // if not an array show error message
+  }
   else {
     console.log('Wrong type ! , you need an array');
   }
 
 };
 
-// function reversing element's
+/**
+ * @param { string | [number] } character
+ * @returns { object } reversed
+ */
 library.reverse =  function(character){
-  var reversed = [], len = character.length;
+  let reversed = [], len = character.length;
   for(var i = len - 1; i >= 0; i--) {
     reversed.push(character[i]);
   }
@@ -220,14 +220,22 @@ library.reverse =  function(character){
   return reversed;
 }
 
-// utils functions
+/**
+ * @param { function } fn
+ * @returns { function } A function that returns the negation of a  function.
+ */
 library.not = function(fn) {
   return function negated(...args) {
     return !fn(...args);
   };
 }
 
-// Convert function , create a getter and setter for an object
+/**
+ * @param { object } obj
+ * @returns
+ * Take an object and convert it by assign a get and set
+ * to this object
+ */
 library.convert = function(obj) {
   if(typeof obj === 'object') {
     Object.keys(obj).forEach(key => {
@@ -250,6 +258,13 @@ library.convert = function(obj) {
   }
 }
 
+/**
+ * @param { function } callback
+ * @returns { function }
+ * Wraps a function of any arity
+ * (including nullary) in a function that accepts exactly 1 parameter.
+ * Any extraneous parameters will not be passed to the supplied function.
+ */
 library.unary = function(callback) {
   if(typeof callback === 'function') {
     callback.length === 1 ? callback : (arg) => callback(arg);
@@ -258,7 +273,13 @@ library.unary = function(callback) {
   }
 }
 
-// once function execute once something
+/**
+ * @param { function } fn
+ * @returns { string | boolean }
+ * Accepts a function fn and returns a function that guards
+ * invocation of fn such that fn can only ever be called once,
+ * no matter how many times the returned function is invoked.
+ */
 library.once = function(fn) {
   if(typeof fn === 'function') {
     let done = false;
@@ -270,16 +291,57 @@ library.once = function(fn) {
   }
 }
 
+/**
+ * @param { number | string  } value
+ * @param { [number] | [string] } elements
+ * @returns {[number]}
+ * Returns the first n elements of the given list, string,
+ * (or object with a take method)
+ */
+library.take = function(value, elements) {
+  let taked = Array();
+  let count = elements.length;
+  if(typeof value === "number") {
+    if(value > count || value === 0) {
+      return elements;
+    } else {
+      for (let index = 0; index < value; index++) {
+        taked.push(elements[index]);
+      }
+      return taked;
+    }
+  } else {
+    return new TypeError('Invalid arguments');
+  }
+}
+
+/**
+ * @returns
+ * Gives a single-word string description of the (native) type of a value,
+ * returning such answers as 'Object', 'Number', 'Array', or 'Null'.
+ * Does not attempt to distinguish user Object types any further,
+ * reporting them all as 'Object'.
+ */
+library.DefType = function(param) {
+  while(param) {
+    return typeof param;
+  }
+  return ;
+}
+
+
 // Destructuring of tips object
 const {
   each , map , reduce , easyReduce, find ,
-  filter , reverse , sort, by , not,  linearSearch , convert , once, unary
+  filter , reverse , sort, by , not,
+  linearSearch , convert , once, unary,
+  take, DefType
 }  = library;
 
 // export modules
 module.exports = {
   each , map , reduce, easyReduce , find ,
   filter, reverse , sort , by, not ,linearSearch,
-  convert , once , unary
+  convert , once , unary,take, DefType
 };
 

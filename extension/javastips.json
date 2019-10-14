@@ -1,0 +1,39 @@
+{
+  "each()" : {
+    "prefix" : "each",
+    "body" : "each([$1], function($2){});",
+    "description": "Iterate over an input list, calling a provided function fn for each element in the list."
+  },
+  "map()":{
+    "prefix": "map",
+    "body":"map($1, ($2) => $3));",
+    "description": "Takes a function and a functor,applies the function to each of the functor's values,and returns a functor of the same shape."
+  },
+  "filter()": {
+    "prefix": "filter",
+    "body": "filter($1, ($2) => $3));",
+    "description": "The filter() method creates an array filled with all array elements that pass a test"
+  },
+  "reduce()": {
+    "prefix": "reduce",
+    "body": "reduce($1, ($2) => $2, $3));",
+    "description" : "The reduce () method reduces the array to a single value. The reduce() method executes a provided function for each value of the array (from left-to-right)."
+  },
+  "find()": {
+    "prefix": "find",
+    "body": "find($1, $2);",
+    "description":  "find function , help us to find a value, inside an array , an object or an string"
+  },
+  "sort()": {
+    "prefix" : "sort",
+    "body": "sort($1);",
+    "description": "function to sort values inside an array this function doesn't work like sort function used in es6 this implementatio as inspired from bubble sort"
+  },
+  "by()": {
+    "prefix": "by",
+    "body": "by('$1')",
+    "description": "The function by takes a string as argument and returns a comparison function that can be used to sort an array of objects containing this argument"
+  },
+  
+
+}

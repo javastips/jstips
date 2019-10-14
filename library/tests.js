@@ -5,16 +5,9 @@ function define(value, callback) {
 
 
 /**
- * @function 
+ * @function
  */
 function isEqualTo(abstractValue,initValue) {
-    // return true if the current element  
+    // return true if the current element
     // is equal to the difference
 }
-
-
-
-
-
-
-

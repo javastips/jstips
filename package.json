@@ -10,5 +10,25 @@
     "javastips"
   ],
   "author": "Svngoku"
-
+    "name": "javastips",
+    "version": "1.0.3",
+    "main": "library/bundle.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/svngoku/JavasTips.git"
+    },
+    "scripts": {
+        "prestart": "webpack",
+        "watch": "webpack --watch"
+    },
+    "keywords": [
+        "javastips"
+    ],
+    "author": "Svngoku",
+    "dependencies": {
+        "webpack": "^4.41.1"
+    },
+    "devDependencies": {
+        "webpack-cli": "^3.3.9"
+    }
 }
