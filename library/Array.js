@@ -14,9 +14,9 @@ Array.dim = function(dimension, initial) {
     }
 }
 
-// return the length of an element an params
 /**
  * @param { array } element
+ * @returns return the length of an element an params
  */
 Array.LengthOf = function(element) {
   if(Array.isArray(element)) {
@@ -132,27 +132,57 @@ Array.append = function(value, array) {
       newArray.push(value);
       return newArray;
     } else {
-      return new TypeError(`Argument ${array} must be an array`);
+      return new TypeError(`Argument must be an array`);
     }
   } else {
     return new Error('Wrong type for your value');
   }
 }
+/**
+ * @param {[number]} array
+ */
+Array.allEqual = function(array) {
+  if(this.isArray(array)) {
+    if(this.LengthOf(array) <= 0) {
+      return array;
+    } else {
+      return array.every(value => value === array[0]);
+    }
+  } else {
+    return TypeError('Argument must be an array');
+  }
+}
 
-// Array.union = function(first, second) {
-//   if(this.isArray(first) && this.isArray(second)) {
+/**
+ * @param { number } a
+ * @param { number } b
+ * @return return the difference between two arrays.
+ */
+Array.difference = function(a, b){
+  if(this.isArray(a) && this.isArray(b)) {
+    const s = new Set(b);
+    return a.filter(x => !s.has(x));
+  } else {
+    return new TypeError('Arguments must be an array');
+  }
+};
 
-//   }
-// }
 
-// Array.oneDimension = function(array, callback) {
-//   var newArray;
-//   if(this.isArray(array)) {
-//     return callback(newArray);
-//   } else {
-//     return new Error('Argument must be an array');
-//   }
-// }
+/**
+ * @param { [number] } arr
+ * @param { function } func
+ * @returns removes elements from an array until
+ *  the passed function returns true
+ */
+Array.dropIf = function(arr, func) {
+  if(this.isArray(arr) && typeof func === "function") {
+    while(this.LengthOf(arr) > 0 && !func(arr[0])) arr = arr.slice(1);
+    return arr;
+  }
+  return new Error('Invalid arguments');
+};
+
+
 
 
 
