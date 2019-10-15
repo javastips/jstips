@@ -1,0 +1,9 @@
+node_modules
+tips
+tests
+.travis.yml
+js.gif
+.github
+.vscode
+extension
+.editorconfig
