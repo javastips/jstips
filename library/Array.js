@@ -183,19 +183,17 @@ Array.dropIf = function(arr, func) {
 };
 
 
-
-
-
-
 const {
   dim, LengthOf
   ,withoutDuplicate, beginAndEndOf,
   zip, minValue,
-  maxValue, append} = Array;
+  maxValue, append,
+  dropIf , allEqual} = Array;
 
 module.exports = {
   dim , LengthOf ,
   withoutDuplicate, beginAndEndOf,
   zip, minValue,
-  maxValue, append
+  maxValue, append,
+    dropIf , allEqual
 };
