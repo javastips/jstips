@@ -22,4 +22,12 @@ const Floatify = function(value, position = 1) {
 }
 
 
-module.exports = { Floatify }
+const Clone = function(object) {
+  if(typeof object === "object") {
+    return JSON.parse(JSON.stringify(object));
+  } else {
+    return new TypeError('Argument must be an object');
+  }
+}
+
+module.exports = { Floatify , Clone }
