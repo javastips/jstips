@@ -17,7 +17,7 @@ const Floatify = function(value, position = 1) {
       return parseFloat(value).toFixed(position)
     }
   } else {
-    return new Error('Argument must be a Number or a String');
+    throw new Error('Argument must be a Number or a String');
   }
 }
 
@@ -26,7 +26,7 @@ const Clone = function(object) {
   if(typeof object === "object") {
     return JSON.parse(JSON.stringify(object));
   } else {
-    return new TypeError('Argument must be an object');
+    throw new TypeError('Argument must be an object');
   }
 }
 
