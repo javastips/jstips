@@ -95,4 +95,5 @@ const BubbleSort = function(array) {
 module.exports =  {
   BoyerMooreHorspool,
   getFibonacciSequence,
+  BubbleSort
 }

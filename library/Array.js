@@ -177,11 +177,23 @@ const dropIf = function(arr, func) {
   throw new Error('Invalid arguments');
 };
 
+/**
+ *
+ * @param {[number]} array
+ * @returns Return the last element of an array
+ */
+const lastElement = function(array){
+  if(!Array.isArray(array) || LengthOf(array) === 0 ) throw new Error("Argument must be an array with values");
+  else return array[LengthOf(array) - 1];
+}
+
+
 module.exports = {
   dim , LengthOf ,
   withoutDuplicate, beginAndEndOf,
   zip, minValue,
   maxValue, append,
   dropIf , allEqual,
-  findSum, difference
+  findSum, difference,
+  lastElement
 };
