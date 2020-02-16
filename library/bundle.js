@@ -9,7 +9,7 @@ const _convertion = require('./convert');
 const {
   each , map , reduce, easyReduce , find ,
   filter, reverse , sort , by, not ,linearSearch,
-  convert , once , unary
+  convert , once , unary, take, DefType, set
 } = _tips
 
 const {
@@ -73,7 +73,10 @@ module.exports = {
   isNumeric,
   isEmpty,
   Floatify,
-  BoyerMooreHorspool
-}
+  BoyerMooreHorspool,
+  take,
+  DefType,
+  set,
+};
 
 

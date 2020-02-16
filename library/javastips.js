@@ -334,19 +334,40 @@ library.DefType = function(param) {
   return ;
 }
 
+/**
+ * @param { Object  } obj
+ * @param { String } propertyName
+ * @param { String } value
+ * @returns { void } Take an object has a first argument and set the selected value
+ * or added a value with a prop.
+ */
+library.set = function(obj, propertyName, value) {
+  if(typeof obj === "object") {
+    for (var property in obj) {
+      if(property === propertyName){
+        if (obj.hasOwnProperty(propertyName) ) {
+          obj[property] = value;
+        }
+      } else {
+        obj[propertyName] = value;
+      }
+    }
+  }
+}
+
 
 // Destructuring of tips object
 const {
   each , map , reduce , easyReduce, find ,
   filter , reverse , sort, by , not,
   linearSearch , convert , once, unary,
-  take, DefType
+  take, DefType, set
 }  = library;
 
 // export modules
 module.exports = {
   each , map , reduce, easyReduce , find ,
   filter, reverse , sort , by, not ,linearSearch,
-  convert , once , unary,take, DefType
+  convert , once , unary,take, DefType, set
 };
 
