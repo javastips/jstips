@@ -122,12 +122,12 @@ const randomString = function(sequence,count , options) {
 }
 
 module.exports = {
-  UpperCase : UpperCase,
-  CamelCase : CamelCase,
-  LowerCase: LowerCase,
-  AccentToNoAccent: AccentToNoAccent,
-  replaceAll: replaceAll,
-  CountWords: CountWords,
-  randomString: randomString,
-  trim: trim
+  UpperCase,
+  CamelCase,
+  LowerCase,
+  AccentToNoAccent,
+  replaceAll,
+  CountWords,
+  randomString,
+  trim
 }

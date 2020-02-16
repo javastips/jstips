@@ -182,5 +182,6 @@ module.exports = {
   withoutDuplicate, beginAndEndOf,
   zip, minValue,
   maxValue, append,
-  dropIf , allEqual
+  dropIf , allEqual,
+  findSum, difference
 };
