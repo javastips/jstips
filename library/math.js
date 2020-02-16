@@ -1,20 +1,19 @@
-const math = {};
 
 /**
  * @param { number } x
  * @param { number } y
  * Addition deux valeurs
  */
-math.add = function(x,y) {
+const add = function(x,y) {
   while(x && y ) {
     if(typeof x === "number" && typeof y === "number" ) {
       if(x !== undefined && y !== undefined || x !== null && y !== null ) {
         return x + y;
       } else {
-        return new TypeError('Argument must be different of null or undefined');
+        throw new Error('Argument must be different of null or undefined');
       }
     } else {
-      return new TypeError('Argument must be a number');
+      throw new Error('Argument must be a number');
     }
   }
 }
@@ -24,7 +23,7 @@ math.add = function(x,y) {
  * @param { number } y
  * multiplie deux valeurs
  */
-math.mult = function(x,y) {
+const mult = function(x,y) {
   if(x !== undefined || null  && y !== undefined || null ) return x * y;
   else return 0;
 }
@@ -34,18 +33,18 @@ math.mult = function(x,y) {
  * @param { number } y
  * Soustrait deux valeurs
  */
-math.substract = function(x, y) {
+const substract = function(x, y) {
   if(typeof x === "number" && typeof y === "number") {
     return x - y;
   } else {
-    return new Error('Arguments must a numbers')
+    throw new Error('Arguments must a numbers')
   }
 }
 
 /**
  * @param { number } value
  */
-math.odd = function(value) {
+const odd = function(value) {
   if(typeof value === "number") {
     if(value !== 0) {
       return value % 2 == 1;
@@ -53,7 +52,7 @@ math.odd = function(value) {
       return 0;
     }
   } else {
-    return new TypeError('Argument must be a Number');
+    throw new Error('Argument must be a Number');
   }
 }
 
@@ -61,7 +60,7 @@ math.odd = function(value) {
 /**
  * @param { number } value
  */
-math.even = function (value) {
+const even = function (value) {
   while(typeof value === 'number') {
     if(value === 0) {
       return value;
@@ -71,7 +70,7 @@ math.even = function (value) {
   }
 }
 
-math.matrix = function(m, n , initial) {
+const matrix = function(m, n , initial) {
   let a , i , j, mat = [];
   for (i = 0; i < m; i++) {
         a = [];
@@ -88,7 +87,7 @@ math.matrix = function(m, n , initial) {
  * @param {number} originalB
  * @returns
  */
-math.euclidean = function(oringA , originB) {
+const euclidean = function(oringA , originB) {
   const a = Math.abs(oringA);
   const b = Math.abs(originB);
 
@@ -117,7 +116,7 @@ math.euclidean = function(oringA , originB) {
  * @param { number } b
  * @return { number }
  */
-math.square = function(a, b) {
+const square = function(a, b) {
   if(typeof a === "number" && typeof b === "number") {
     if(a && b !== 0) {
       let nbrS = 0, q = 1;
@@ -128,25 +127,18 @@ math.square = function(a, b) {
       }
       return nbrS;
     } else {
-      return TypeError("Invalid argument");
+      throw new Error("Invalid argument");
     }
   } else {
-    return TypeError('Arguments must be numbers');
+    throw new Error('Arguments must be numbers');
   }
 }
 
 
 
-const {
-  odd  , even ,
-  matrix , add ,
-  mult, euclidean,
-  square
-} = math;
-
 module.exports = {
-    odd , even ,
-    add , mult ,
-    matrix , euclidean,
-    square
+  odd , even ,
+  add , mult ,
+  matrix , euclidean,
+  square, substract
 }

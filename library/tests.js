@@ -1,13 +1,25 @@
 "use strict";
-function define(value, callback) {
-    // define a sequence of tests
+function define(func) {
+  if(typeof func === "function") {
+    func();
+  } else {
+    throw new Error('wrong type on your arguments');
+  }
 }
-
 
 /**
  * @function
+ *
+  console.log(isEqualTo(1,2));
+ *
  */
 function isEqualTo(abstractValue,initValue) {
-    // return true if the current element
-    // is equal to the difference
+  return initValue === abstractValue ?  true : new Error(`Not equal : ${abstractValue} !== ${initValue}`);
+}
+
+
+
+export default {
+  define,
+  isEqualTo
 }

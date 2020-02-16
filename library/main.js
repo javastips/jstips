@@ -1,12 +1,12 @@
 const tips = require('./bundle');
 
 // Using each method
-tips.each(['Bianca', 'Pamela', 'Jessica'], function(name,i, list) { // BIANCA 0
-    if(list[i + 1]) { // true
+tips.each(['Bianca', 'Pamela', 'Jessica'], function(name,i, list) {
+  if(list[i + 1]) { // true
       console.log(name, 'is younger than', list[i + 1 ] )
     } else {
       console.log(name,'is the oldest');
-    }
+  }
 });
 // Using reduce method
 console.log(tips.reduce([1,2,3,4], (a, b) => a + b, 0)) // Start at 0, sum 10

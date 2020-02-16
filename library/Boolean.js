@@ -11,7 +11,7 @@ const isEmpty = function(value) {
       return false
     }
   } else {
-    return new Error('Argument must be an array');
+    throw new Error('Argument must be an array');
   }
 }
 
@@ -27,7 +27,7 @@ const isNumeric = function(argument) {
       return false;
     }
   } else {
-    return new Error('Argument must be a number');
+    throw new Error('Argument must be a number');
   }
 }
 
@@ -47,7 +47,7 @@ const isShortThan = function(string, value) {
       return false;
     }
   } else {
-    return new Error("Argument must be a string");
+    throw new Error("Argument must be a string");
   }
 }
 

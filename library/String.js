@@ -114,7 +114,7 @@ const randomString = function(sequence,count , options) {
   let result = sequence.split('').slice(0, count);
   if(options.capitalize) {
     result = result.map( (w) => {
-      word = `${UpperCase(word[0])} ${word.substring(1)}`
+      word = `${UpperCase(w[0])} ${w.substring(1)}`
       return word;
     })
     return result.join(' ');

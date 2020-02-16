@@ -17,6 +17,7 @@ library.each = function(list, callback) {
       callback(list[key], key, list);
     }
   }
+
 };
 
 /**
@@ -83,7 +84,7 @@ library.reduce = function(list, callback , initialValue){
     }
     return memo;
   } else {
-    return new Error('Argument must be an array');
+    throw new Error('Argument must be an array');
   }
 
 }
@@ -96,7 +97,7 @@ library.reduce = function(list, callback , initialValue){
  * @return  boolean
  */
 library.find = function(value, inside) {
-    let finded;
+    let finded = null;
     if(Array.isArray(inside)) {
       var looping = this.each(inside, (v) => {
         if(v === value) {
@@ -125,37 +126,39 @@ library.find = function(value, inside) {
         else finded = false;
       }
     }
-    console.log(finded)
+  return finded;
 }
 
 
 /**
- * @param { object } element
+ * @param { [number] } array
  * function to sort values inside an array
  * this function doesn't work like sort function used in es6
  * this implementatio as inspired from bubble sort .
 */
-library.sort = function (element) {
-    // length of the array
-    var len = element.length;
-    // the swap function change the position of elements
-    // by verifiying if index1 < than index2 from the array
+library.sort = function(array) {
+  let len = array.length;
+  if(!len) {
+    return ;
+  }
+  if(Array.isArray(array)) {
     function swap(array, index1, index2) {
-      var temp = array[index1];
-      array[index1] = array[index2];
+      let temp = array[index1];
+      array[index1] = array[index2]
       array[index2] = temp;
     }
-    // looping the array and compare values
-    for(var i = 0; i < len; i++) {
-      for(var j = 0; j <= i; j++ ) {
-        if(element[i] < element[j]) {
-          swap(element, i, j);
+    for (let i = 0; i < len; i++) {
+      for (let j = 0; j <= i; j++) {
+        if(array[i] < array[j]) {
+          swap(array, i,j);
         }
       }
     }
-    // return []
-    return element;
-};
+    return array;
+  } else {
+    throw new Error("Argument must be an array");
+  }
+}
 
 
 
@@ -179,7 +182,7 @@ library.by = function(element) {
       }
       return typeof a < typeof b ? -1 : 1;
     } else {
-      return new Error(`Exepected an object when sorting by ${element}`);
+      throw new Error(`Exepected an object when sorting by ${element}`);
     }
   };
 }
@@ -195,14 +198,14 @@ library.linearSearch = function (array, number) {
     for(var i = 0; i < size; i++) {
       if(array[i] == number) {
        position = array[i] - 1;
-        console.log(`L'élément ce situe à la position ${position} du tableau .`);
+        console.log(`Position: ${position} .`);
         return ;
       }
     }
-    console.log(false);
+    return false;
   }
   else {
-    console.log('Wrong type ! , you need an array');
+    throw new Error('Wrong type ! , you need an array');
   }
 
 };
@@ -216,7 +219,6 @@ library.reverse =  function(character){
   for(var i = len - 1; i >= 0; i--) {
     reversed.push(character[i]);
   }
-  // return  the new element reversed
   return reversed;
 }
 
@@ -225,9 +227,12 @@ library.reverse =  function(character){
  * @returns { function } A function that returns the negation of a  function.
  */
 library.not = function(fn) {
-  return function negated(...args) {
-    return !fn(...args);
-  };
+  if(typeof fn === "function") {
+    return function negated(...args) {
+      return !fn(...args);
+    };
+  }
+  throw new Error("Argument must be an function");
 }
 
 /**
@@ -254,7 +259,7 @@ library.convert = function(obj) {
       })
     })
   } else {
-    return new Error(`Object ${obj} must be a object type`)
+    throw new Error(`Object ${obj} must be a object type`);
   }
 }
 
@@ -269,7 +274,7 @@ library.unary = function(callback) {
   if(typeof callback === 'function') {
     callback.length === 1 ? callback : (arg) => callback(arg);
   } else {
-    return new Error('Argument must be a function');
+    throw new Error('Argument must be a function');
   }
 }
 
@@ -287,7 +292,7 @@ library.once = function(fn) {
       return done ? undefined : ((done = true), fn.apply(this, arguments));
     }
   } else {
-    return new Error('The element must be a function declaration');
+    throw new Error('The element must be a function declaration');
   }
 }
 
@@ -311,7 +316,7 @@ library.take = function(value, elements) {
       return taked;
     }
   } else {
-    return new TypeError('Invalid arguments');
+    throw new TypeError('Invalid arguments');
   }
 }
 

@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * const t = "bonjour jeremy , tu vas bien ? "
  * const s = "jeremy";
@@ -34,8 +36,63 @@ const BoyerMooreHorspool = function(needle, haystack) {
   return -1;
 }
 
+/**
+ * @param {number} length
+ */
+const getFibonacciSequence = function(length) {
+  var n, ref, results;
+  results = [1];
+
+  const fibonacci = function*() {
+    var current, previous;
+    [previous, current] = [1, 1];
+    while (true) {
+      [previous, current] = [current, previous + current];
+      yield current;
+    }
+  };
+
+  ref = fibonacci();
+  for (n of ref) {
+    results.push(n);
+    if (results.length === length) {
+      break;
+    }
+  }
+  return results;
+};
 
 
-module.exports = {
-  BoyerMooreHorspool
+/**
+ *
+ * @param {[number]} array
+ */
+const BubbleSort = function(array) {
+  let arrayLength = array.length;
+  if(!arrayLength) {
+    return ;
+  }
+  if(Array.isArray(array)) {
+    function swap(array, index1, index2) {
+      let temp = array[index1];
+      array[index1] = array[index2]
+      array[index2] = temp;
+    }
+    for (let i = 0; i < arrayLength; i++) {
+      for (let j = 0; j <= i; j++) {
+        if(array[i] < array[j]) {
+          swap(array, i,j);
+        }
+      }
+    }
+    return array;
+  } else {
+    throw new Error("Argument must be an array");
+  }
+
+}
+
+module.exports =  {
+  BoyerMooreHorspool,
+  getFibonacciSequence,
 }
