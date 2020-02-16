@@ -5,7 +5,7 @@ const httpUrl = {};
  */
 httpUrl.GetURLParameter = function(sParam){
     const sPgeURL = window.location.search.substring(1);
-    const sURLVariables = sPageURL.split('&');
+    const sURLVariables = sPgeURL.split('&');
     for (let i = 0; i < sURLVariables.length; i++){
       let sParameterName = sURLVariables[i].split('=');
       if (sParameterName[0] === sParam) return sParameterName[1];
