@@ -21,7 +21,7 @@ const add = function(x,y) {
 /**
  * @param { number } x
  * @param { number } y
- * multiplie deux valeurs
+ * @returns Make a multiplication operation
  */
 const mult = function(x,y) {
   if(x !== undefined || null  && y !== undefined || null ) return x * y;
@@ -70,6 +70,13 @@ const even = function (value) {
   }
 }
 
+/**
+ *
+ * @param {number} m
+ * @param {number} n
+ * @param {number} initial
+ * @returns Return numbers formated on matrix
+ */
 const matrix = function(m, n , initial) {
   let a , i , j, mat = [];
   for (i = 0; i < m; i++) {
@@ -85,7 +92,7 @@ const matrix = function(m, n , initial) {
 /**
  * @param {number} originalA
  * @param {number} originalB
- * @returns
+ * @returns The eucludian value of  numbers
  */
 const euclidean = function(oringA , originB) {
   const a = Math.abs(oringA);
@@ -134,11 +141,33 @@ const square = function(a, b) {
   }
 }
 
+/**
+ * @param {number} mass
+ * @argument C speed of the light
+ * @returns Calculate how much energy they could
+ * get if they transformed their mass.
+ */
 
+const EMC2 = function(mass) {
+  const C = Number.parseFloat(2.99792458);
+  let energyJoules = Number.parseFloat(0);
+  let massKg = Number.parseFloat(0);
+  if(mass) {
+    massKg = Number.parseFloat(mass).toFixed(1);
+    energyJoules = massKg * C * C;
+    return {
+      equation: "e = m * C^2...",
+      masse: `m = ${massKg} kg`,
+      "speed of light": `C = ${C} m/s`,
+      energy: `${energyJoules} joules of energy!`
+    }
+  }
+}
 
 module.exports = {
   odd , even ,
   add , mult ,
   matrix , euclidean,
-  square, substract
+  square, substract,
+  EMC2
 }
