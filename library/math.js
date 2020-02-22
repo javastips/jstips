@@ -117,6 +117,18 @@ const euclidean = function(oringA , originB) {
     return euclidean(b % a, a);
   }
 }
+/**
+ *
+ * @param {number} number
+ */
+const exponential = function(number) {
+  const num = number;
+  if(typeof number === "number") {
+    return num.toExponential();
+  } else {
+    throw new Error(`argument must be an number`);
+  }
+}
 
 /**
  * @param { number } a

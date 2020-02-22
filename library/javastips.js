@@ -1,13 +1,11 @@
 "use strict";
 
-const library = {}
-
 /**
  * @param { [number]} list
  * @param { function } callback
  * Iterate over an input list, calling a provided function fn for each element in the list.
  */
-library.each = function(list, callback) {
+const each = function(list, callback) {
   if(Array.isArray(list)) {
     for(var i = 0; i < list.length; i++){
       callback(list[i], i, list);
@@ -27,18 +25,18 @@ library.each = function(list, callback) {
   * applies the function to each of the functor's values,
   * and returns a functor of the same shape.
  */
-library.map = function(list, callback) {
+const map = function(list, callback) {
    var storage = [];
-   library.each(list, function(v,i, list) {
+    each(list, function(v,i, list) {
       storage.push(callback(v, i, list));
    });
    return storage;
 };
 
 // filter array
-library.filter = function(array, callback) {
+const filter = function(array, callback) {
   var store = [];
-  library.each(array, function(item, i, list) {
+  each(array, function(item, i, list) {
     if(callback(item, i,list)) store.push(item);
   });
   return store;
@@ -54,7 +52,7 @@ library.filter = function(array, callback) {
  * it an accumulator value and the current value from the array,
  * and then passing the result to the next call.
  */
-library.easyReduce = function (array, combine, start) {
+const easyReduce = function (array, combine, start) {
   let current = start;
   for(let element of array) {
     current = combine(current, element);
@@ -70,7 +68,7 @@ library.easyReduce = function (array, combine, start) {
  * @return number
  *
  */
-library.reduce = function(list, callback , initialValue){
+const reduce = function(list, callback , initialValue){
   let memo = initialValue;
   if(Array.isArray(list)) {
     for( var i = 0; i < list.length; i++) {
@@ -96,7 +94,7 @@ library.reduce = function(list, callback , initialValue){
  * @param { number | string  } inside
  * @return  boolean
  */
-library.find = function(value, inside) {
+const find = function(value, inside) {
     let finded = null;
     if(Array.isArray(inside)) {
       var looping = this.each(inside, (v) => {
@@ -136,7 +134,7 @@ library.find = function(value, inside) {
  * this function doesn't work like sort function used in es6
  * this implementatio as inspired from bubble sort .
 */
-library.sort = function(array) {
+const sort = function(array) {
   let len = array.length;
   if(!len) {
     return ;
@@ -171,7 +169,7 @@ library.sort = function(array) {
  *
  * Par : Douglas Crofford.
  */
-library.by = function(element) {
+const by = function(element) {
   return function(o,p) {
     var a , b;
     if(typeof o === 'object' && typeof p === 'object' && o && p) {
@@ -192,7 +190,7 @@ library.by = function(element) {
  * @param { [number] } array
  * @param { number } number
  */
-library.linearSearch = function (array, number) {
+const linearSearch = function (array, number) {
   var size = array.length, position = 0;
   if(Array.isArray(array)) {
     for(var i = 0; i < size; i++) {
@@ -214,7 +212,7 @@ library.linearSearch = function (array, number) {
  * @param { string | [number] } character
  * @returns { object } reversed
  */
-library.reverse =  function(character){
+const reverse =  function(character){
   let reversed = [], len = character.length;
   for(var i = len - 1; i >= 0; i--) {
     reversed.push(character[i]);
@@ -226,7 +224,7 @@ library.reverse =  function(character){
  * @param { function } fn
  * @returns { function } A function that returns the negation of a  function.
  */
-library.not = function(fn) {
+const not = function(fn) {
   if(typeof fn === "function") {
     return function negated(...args) {
       return !fn(...args);
@@ -241,7 +239,7 @@ library.not = function(fn) {
  * Take an object and convert it by assign a get and set
  * to this object
  */
-library.convert = function(obj) {
+const convert = function(obj) {
   if(typeof obj === 'object') {
     Object.keys(obj).forEach(key => {
       let intervalValue = obj[key];
@@ -270,7 +268,7 @@ library.convert = function(obj) {
  * (including nullary) in a function that accepts exactly 1 parameter.
  * Any extraneous parameters will not be passed to the supplied function.
  */
-library.unary = function(callback) {
+const unary = function(callback) {
   if(typeof callback === 'function') {
     callback.length === 1 ? callback : (arg) => callback(arg);
   } else {
@@ -285,7 +283,7 @@ library.unary = function(callback) {
  * invocation of fn such that fn can only ever be called once,
  * no matter how many times the returned function is invoked.
  */
-library.once = function(fn) {
+const once = function(fn) {
   if(typeof fn === 'function') {
     let done = false;
     return function() {
@@ -303,8 +301,8 @@ library.once = function(fn) {
  * Returns the first n elements of the given list, string,
  * (or object with a take method)
  */
-library.take = function(value, elements) {
-  let taked = Array();
+const take = function(value, elements) {
+  let taked = [];
   let count = elements.length;
   if(typeof value === "number") {
     if(value > count || value === 0) {
@@ -327,7 +325,7 @@ library.take = function(value, elements) {
  * Does not attempt to distinguish user Object types any further,
  * reporting them all as 'Object'.
  */
-library.DefType = function(param) {
+const DefType = function(param) {
   while(param) {
     return typeof param;
   }
@@ -341,7 +339,7 @@ library.DefType = function(param) {
  * @returns { void } Take an object has a first argument and set the selected value
  * or added a value with a prop.
  */
-library.set = function(obj, propertyName, value) {
+const set = function(obj, propertyName, value) {
   if(typeof obj === "object") {
     for (var property in obj) {
       if(property === propertyName){
@@ -352,17 +350,11 @@ library.set = function(obj, propertyName, value) {
         obj[propertyName] = value;
       }
     }
+  } else {
+    throw new Error("Argument must be an object");
   }
+
 }
-
-
-// Destructuring of tips object
-const {
-  each , map , reduce , easyReduce, find ,
-  filter , reverse , sort, by , not,
-  linearSearch , convert , once, unary,
-  take, DefType, set
-}  = library;
 
 // export modules
 module.exports = {

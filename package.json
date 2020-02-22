@@ -14,7 +14,8 @@
   ],
   "author": "Svngoku",
   "scripts": {
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "build": "rollup --config"
   },
   "dependencies": {
     "webpack": "^4.41.1"

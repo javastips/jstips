@@ -8,18 +8,17 @@ function define(func) {
 }
 
 /**
- * @function
- *
-  console.log(isEqualTo(1,2));
- *
+ * @param { any } abstractValue
+ * @param { any } initValue
  */
-function isEqualTo(abstractValue,initValue) {
+const isEqualTo = function(abstractValue,initValue) {
   return initValue === abstractValue ?  true : new Error(`Not equal : ${abstractValue} !== ${initValue}`);
 }
 
+module.exports = {
+  define, isEqualTo
+};
 
 
-export default {
-  define,
-  isEqualTo
-}
+
+

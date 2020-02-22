@@ -1,82 +1,47 @@
-const _algorithm = require('./algorithem');
-const _tips = require('./javastips');
-const _string = require('./String');
-const _array = require('./Array');
-const _boolean = require('./Boolean');
-const _convertion = require('./convert');
+import {
+  getFibonacciSequence,
+  BubbleSort,
+  BoyerMoreHorspool
+}  from './algorithem';
 
+import {
+  DefType, by, convert, each , easyReduce, filter,
+  find, linearSearch, map , not, once ,reduce,
+  reverse, set, sort , take , unary
+}  from './javastips';
 
-const {
-  each , map , reduce, easyReduce , find ,
-  filter, reverse , sort , by, not ,linearSearch,
-  convert , once , unary, take, DefType, set
-} = _tips
+import {
+  AccentToNoAccent , CamelCase , CountWords,
+  LowerCase , UpperCase , randomString,
+  replaceAll , trim
+} from './String';
 
-const {
-  UpperCase,
-  CamelCase,
-  LowerCase,
-  AccentToNoAccent,
-  replaceAll,
-  CountWords,
-  randomString
-} = _string
+import {
+  LengthOf, allEqual, append, beginAndEndOf,
+  difference, dim, dropIf, findSum,
+  lastElement, maxValue, minValue,
+  withoutDuplicate, zip
+}  from './Array';
 
+import {
+  isEmpty, isNumeric, isShortThan
+}  from './Boolean';
 
-const {
-  dim , LengthOf ,
-  withoutDuplicate, beginAndEndOf,
-  zip
-} = _array
+import {
+  Clone, Floatify
+}  from './convert';
 
+import {
+  EMC2 , add , euclidean,
+  even , matrix , mult,
+  odd, square, substract
+}  from "./Math";
 
-const {
-  isShortThan,
-  isNumeric,
-  isEmpty
-} = _boolean
+import {
+  define , isEqualTo
+}  from './tests';
 
-const { Floatify } = _convertion
-
-
-const { BoyerMooreHorspool } = _algorithm
-
-
-module.exports = {
-  each ,
-  map ,
-  reduce,
-  easyReduce ,
-  find ,
-  filter,
-  reverse ,
-  sort ,
-  by,
-  not ,
-  linearSearch,
-  convert ,
-  once ,
-  unary,
-  UpperCase,
-  CamelCase,
-  LowerCase,
-  AccentToNoAccent,
-  replaceAll,
-  CountWords,
-  randomString,
-  dim ,
-  LengthOf ,
-  withoutDuplicate,
-  beginAndEndOf,
-  zip,
-  isShortThan,
-  isNumeric,
-  isEmpty,
-  Floatify,
-  BoyerMooreHorspool,
-  take,
-  DefType,
-  set,
-};
-
+import {
+  TimeOfRunning, loggerHelper
+}  from './debugging';
 

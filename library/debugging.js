@@ -35,5 +35,10 @@ const TimeOfRunning = function(fnc, name) {
 }
 
 
+module.exports = {
+  loggerHelper, TimeOfRunning
+};
+
+
 
 
