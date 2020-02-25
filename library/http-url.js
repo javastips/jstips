@@ -1,17 +1,16 @@
 const httpUrl = {};
 
 /**
- * @param { string } sParam
- */
-const GetURLParameter = function(sParam){
-  const sPgeURL = window.location.search.substring(1);
-  const sURLVariables = sPgeURL.split('&');
-  for (let i = 0; i < sURLVariables.length; i++){
-    let sParameterName = sURLVariables[i].split('=');
-    if (sParameterName[0] === sParam) return sParameterName[1];
-  }
+ * @param { string } url
+*/
+const getUrlParam = function(url) {
+  return (url.match(/([^?=&]+)(=([^&]*))/g) || [])
+    .reduce(
+      (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
+      {}
+    );
 }
 
 module.exports = {
-  GetURLParameter
+  getUrlParam
 }

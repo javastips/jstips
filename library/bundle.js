@@ -34,7 +34,8 @@ import {
 import {
   EMC2 , add , euclidean,
   even , matrix , mult,
-  odd, square, substract
+  odd, square, substract,
+  primes
 }  from "./Math";
 
 import {

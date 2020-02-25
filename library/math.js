@@ -176,10 +176,34 @@ const EMC2 = function(mass) {
   }
 }
 
+/**
+ *
+ * @param {number} num
+ * @returns Generates primes up to a given number, using the Sieve of Eratosthenes.
+ */
+const primes = function(num) {
+  let state = num;
+  let arr = Array.from({
+    length: num - 1
+  }).map((x, i) => i + 2),
+  sqroot = Math.floor(Math.sqrt(state)),
+  numTillSqrt = Array.from({
+    length: sqroot - 1
+  }).map((x,i) => i + 2);
+
+  numTillSqrt.forEach(function(x) {
+    return arr = arr.filter(y => y % x !== 0 || y === x )
+  });
+
+  return arr;
+}
+
+
+
 module.exports = {
   odd , even ,
   add , mult ,
   matrix , euclidean,
   square, substract,
-  EMC2
+  EMC2, primes
 }
