@@ -1,48 +1,73 @@
-import {
-  getFibonacciSequence,
-  BubbleSort,
-  BoyerMoreHorspool
-}  from './algorithem';
-
-import {
-  DefType, by, convert, each , easyReduce, filter,
-  find, linearSearch, map , not, once ,reduce,
-  reverse, set, sort , take , unary
-}  from './javastips';
-
-import {
-  AccentToNoAccent , CamelCase , CountWords,
-  LowerCase , UpperCase , randomString,
-  replaceAll , trim
-} from './String';
-
-import {
-  LengthOf, allEqual, append, beginAndEndOf,
-  difference, dim, dropIf, findSum,
-  lastElement, maxValue, minValue,
-  withoutDuplicate, zip
-}  from './Array';
-
-import {
-  isEmpty, isNumeric, isShortThan
-}  from './Boolean';
-
-import {
-  Clone, Floatify
-}  from './convert';
-
-import {
-  EMC2 , add , euclidean,
-  even , matrix , mult,
-  odd, square, substract,
-  primes
-}  from "./Math";
-
-import {
-  define , isEqualTo
-}  from './tests';
-
-import {
-  TimeOfRunning, loggerHelper
-}  from './debugging';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.even = exports.euclidean = exports.add = exports.EMC2 = exports.Floatify = exports.Clone = exports.isShortThan = exports.isNumeric = exports.isEmpty = exports.zip = exports.withoutDuplicate = exports.minValue = exports.maxValue = exports.lastElement = exports.findSum = exports.dropIf = exports.dim = exports.difference = exports.beginAndEndOf = exports.append = exports.allEqual = exports.LengthOf = exports.trim = exports.replaceAll = exports.randomString = exports.UpperCase = exports.LowerCase = exports.CountWords = exports.CamelCase = exports.AccentToNoAccent = exports.unary = exports.take = exports.sort = exports.set = exports.reverse = exports.reduce = exports.once = exports.not = exports.map = exports.linearSearch = exports.find = exports.filter = exports.easyReduce = exports.each = exports.convert = exports.by = exports.DefType = exports.BoyerMoreHorspool = exports.BubbleSort = exports.getFibonacciSequence = void 0;
+exports.loggerHelper = exports.TimeOfRunning = exports.isEqualTo = exports.define = exports.primes = exports.substract = exports.square = exports.odd = exports.mult = exports.matrix = void 0;
+const algorithem_1 = require("./algorithem");
+Object.defineProperty(exports, "getFibonacciSequence", { enumerable: true, get: function () { return algorithem_1.getFibonacciSequence; } });
+Object.defineProperty(exports, "BubbleSort", { enumerable: true, get: function () { return algorithem_1.BubbleSort; } });
+Object.defineProperty(exports, "BoyerMoreHorspool", { enumerable: true, get: function () { return algorithem_1.BoyerMoreHorspool; } });
+const javastips_1 = require("./javastips");
+Object.defineProperty(exports, "DefType", { enumerable: true, get: function () { return javastips_1.DefType; } });
+Object.defineProperty(exports, "by", { enumerable: true, get: function () { return javastips_1.by; } });
+Object.defineProperty(exports, "convert", { enumerable: true, get: function () { return javastips_1.convert; } });
+Object.defineProperty(exports, "each", { enumerable: true, get: function () { return javastips_1.each; } });
+Object.defineProperty(exports, "easyReduce", { enumerable: true, get: function () { return javastips_1.easyReduce; } });
+Object.defineProperty(exports, "filter", { enumerable: true, get: function () { return javastips_1.filter; } });
+Object.defineProperty(exports, "find", { enumerable: true, get: function () { return javastips_1.find; } });
+Object.defineProperty(exports, "linearSearch", { enumerable: true, get: function () { return javastips_1.linearSearch; } });
+Object.defineProperty(exports, "map", { enumerable: true, get: function () { return javastips_1.map; } });
+Object.defineProperty(exports, "not", { enumerable: true, get: function () { return javastips_1.not; } });
+Object.defineProperty(exports, "once", { enumerable: true, get: function () { return javastips_1.once; } });
+Object.defineProperty(exports, "reduce", { enumerable: true, get: function () { return javastips_1.reduce; } });
+Object.defineProperty(exports, "reverse", { enumerable: true, get: function () { return javastips_1.reverse; } });
+Object.defineProperty(exports, "set", { enumerable: true, get: function () { return javastips_1.set; } });
+Object.defineProperty(exports, "sort", { enumerable: true, get: function () { return javastips_1.sort; } });
+Object.defineProperty(exports, "take", { enumerable: true, get: function () { return javastips_1.take; } });
+Object.defineProperty(exports, "unary", { enumerable: true, get: function () { return javastips_1.unary; } });
+const String_1 = require("./String");
+Object.defineProperty(exports, "AccentToNoAccent", { enumerable: true, get: function () { return String_1.AccentToNoAccent; } });
+Object.defineProperty(exports, "CamelCase", { enumerable: true, get: function () { return String_1.CamelCase; } });
+Object.defineProperty(exports, "CountWords", { enumerable: true, get: function () { return String_1.CountWords; } });
+Object.defineProperty(exports, "LowerCase", { enumerable: true, get: function () { return String_1.LowerCase; } });
+Object.defineProperty(exports, "UpperCase", { enumerable: true, get: function () { return String_1.UpperCase; } });
+Object.defineProperty(exports, "randomString", { enumerable: true, get: function () { return String_1.randomString; } });
+Object.defineProperty(exports, "replaceAll", { enumerable: true, get: function () { return String_1.replaceAll; } });
+Object.defineProperty(exports, "trim", { enumerable: true, get: function () { return String_1.trim; } });
+const Array_1 = require("./Array");
+Object.defineProperty(exports, "LengthOf", { enumerable: true, get: function () { return Array_1.LengthOf; } });
+Object.defineProperty(exports, "allEqual", { enumerable: true, get: function () { return Array_1.allEqual; } });
+Object.defineProperty(exports, "append", { enumerable: true, get: function () { return Array_1.append; } });
+Object.defineProperty(exports, "beginAndEndOf", { enumerable: true, get: function () { return Array_1.beginAndEndOf; } });
+Object.defineProperty(exports, "difference", { enumerable: true, get: function () { return Array_1.difference; } });
+Object.defineProperty(exports, "dim", { enumerable: true, get: function () { return Array_1.dim; } });
+Object.defineProperty(exports, "dropIf", { enumerable: true, get: function () { return Array_1.dropIf; } });
+Object.defineProperty(exports, "findSum", { enumerable: true, get: function () { return Array_1.findSum; } });
+Object.defineProperty(exports, "lastElement", { enumerable: true, get: function () { return Array_1.lastElement; } });
+Object.defineProperty(exports, "maxValue", { enumerable: true, get: function () { return Array_1.maxValue; } });
+Object.defineProperty(exports, "minValue", { enumerable: true, get: function () { return Array_1.minValue; } });
+Object.defineProperty(exports, "withoutDuplicate", { enumerable: true, get: function () { return Array_1.withoutDuplicate; } });
+Object.defineProperty(exports, "zip", { enumerable: true, get: function () { return Array_1.zip; } });
+const Boolean_1 = require("./Boolean");
+Object.defineProperty(exports, "isEmpty", { enumerable: true, get: function () { return Boolean_1.isEmpty; } });
+Object.defineProperty(exports, "isNumeric", { enumerable: true, get: function () { return Boolean_1.isNumeric; } });
+Object.defineProperty(exports, "isShortThan", { enumerable: true, get: function () { return Boolean_1.isShortThan; } });
+const convert_1 = require("./convert");
+Object.defineProperty(exports, "Clone", { enumerable: true, get: function () { return convert_1.Clone; } });
+Object.defineProperty(exports, "Floatify", { enumerable: true, get: function () { return convert_1.Floatify; } });
+const Math_1 = require("./Math");
+Object.defineProperty(exports, "EMC2", { enumerable: true, get: function () { return Math_1.EMC2; } });
+Object.defineProperty(exports, "add", { enumerable: true, get: function () { return Math_1.add; } });
+Object.defineProperty(exports, "euclidean", { enumerable: true, get: function () { return Math_1.euclidean; } });
+Object.defineProperty(exports, "even", { enumerable: true, get: function () { return Math_1.even; } });
+Object.defineProperty(exports, "matrix", { enumerable: true, get: function () { return Math_1.matrix; } });
+Object.defineProperty(exports, "mult", { enumerable: true, get: function () { return Math_1.mult; } });
+Object.defineProperty(exports, "odd", { enumerable: true, get: function () { return Math_1.odd; } });
+Object.defineProperty(exports, "square", { enumerable: true, get: function () { return Math_1.square; } });
+Object.defineProperty(exports, "substract", { enumerable: true, get: function () { return Math_1.substract; } });
+Object.defineProperty(exports, "primes", { enumerable: true, get: function () { return Math_1.primes; } });
+const tests_1 = require("./tests");
+Object.defineProperty(exports, "define", { enumerable: true, get: function () { return tests_1.define; } });
+Object.defineProperty(exports, "isEqualTo", { enumerable: true, get: function () { return tests_1.isEqualTo; } });
+const debugging_1 = require("./debugging");
+Object.defineProperty(exports, "TimeOfRunning", { enumerable: true, get: function () { return debugging_1.TimeOfRunning; } });
+Object.defineProperty(exports, "loggerHelper", { enumerable: true, get: function () { return debugging_1.loggerHelper; } });
