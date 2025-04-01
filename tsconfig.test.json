@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "downlevelIteration": true
+  },
+  "include": ["test.ts", "library/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

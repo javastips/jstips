@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavasTips TypeScript Test</title>
+    <script src="dist/javastips.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Test add function
+            const addResult = javastips.add(2, 3);
+            document.getElementById('add-result').textContent = `2 + 3 = ${addResult}`;
+            
+            // Test UpperCase function
+            const upperResult = javastips.UpperCase('hello');
+            document.getElementById('upper-result').textContent = `'hello' to uppercase: ${upperResult}`;
+            
+            // Test LengthOf function
+            const lengthResult = javastips.LengthOf([1, 2, 3, 4, 5]);
+            document.getElementById('length-result').textContent = `Length of [1, 2, 3, 4, 5]: ${lengthResult}`;
+            
+            // Test BubbleSort function
+            const unsortedArray = [5, 3, 8, 1, 2, 9, 4, 7, 6];
+            const sortedArray = javastips.BubbleSort(unsortedArray);
+            document.getElementById('unsorted-array').textContent = `Unsorted array: ${unsortedArray}`;
+            document.getElementById('sorted-array').textContent = `Sorted array: ${sortedArray}`;
+        });
+    </script>
+</head>
+<body>
+    <h1>JavasTips TypeScript Test</h1>
+    
+    <h2>Add Function</h2>
+    <p id="add-result"></p>
+    
+    <h2>UpperCase Function</h2>
+    <p id="upper-result"></p>
+    
+    <h2>LengthOf Function</h2>
+    <p id="length-result"></p>
+    
+    <h2>BubbleSort Function</h2>
+    <p id="unsorted-array"></p>
+    <p id="sorted-array"></p>
+</body>
+</html>

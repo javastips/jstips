@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TimeOfRunning = exports.loggerHelper = void 0;
 /**
  * @param {string} mode
  * @param {string} initMessage
@@ -6,39 +9,35 @@
  * @returns {string}
  * Define logger's messages
  */
-const loggerHelper = function(mode,initMessage, errorMessage, Nline) {
-  if(mode === "DEBUG") {
-    console.debug(`${initMessage} ${errorMessage} at line: ${Nline}`);
-  } else if(mode === "ERROR") {
-    console.error(`${initMessage} ${errorMessage} at line: ${Nline}`);
-  } else if(mode === "WARN") {
-    console.error(`${initMessage} ${errorMessage} at line: ${Nline}`);
-  } else {
-    throw new Error('Wrong mode for your debugging');
-  }
-}
-
+const loggerHelper = function (mode, initMessage, errorMessage, Nline) {
+    if (mode === "DEBUG") {
+        console.debug(`${initMessage} ${errorMessage} at line: ${Nline}`);
+    }
+    else if (mode === "ERROR") {
+        console.error(`${initMessage} ${errorMessage} at line: ${Nline}`);
+    }
+    else if (mode === "WARN") {
+        console.error(`${initMessage} ${errorMessage} at line: ${Nline}`);
+    }
+    else {
+        throw new Error('Wrong mode for your debugging');
+    }
+};
+exports.loggerHelper = loggerHelper;
 /**
  * @param { function } fnc
  * @param {string} name
  */
-const TimeOfRunning = function(fnc, name) {
-  if(typeof fnc === "function" && typeof name === "string") {
-    (function() {
-      console.time(`${name}`);
-      fnc();
-      console.timeEnd(`${name}`);
-    })();
-  } else {
-    throw new Error('Arguments errors');
-  }
-}
-
-
-module.exports = {
-  loggerHelper, TimeOfRunning
+const TimeOfRunning = function (fnc, name) {
+    if (typeof fnc === "function" && typeof name === "string") {
+        (function () {
+            console.time(`${name}`);
+            fnc();
+            console.timeEnd(`${name}`);
+        })();
+    }
+    else {
+        throw new Error('Arguments errors');
+    }
 };
-
-
-
-
+exports.TimeOfRunning = TimeOfRunning;
