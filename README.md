@@ -1,73 +1,147 @@
-![alt text](https://raw.githubusercontent.com/svngoku/JavasTips/master/js.gif)
+![JavasTips](https://raw.githubusercontent.com/svngoku/JavasTips/master/js.gif)
 
 # JavasTips
 
-1.[What is JavasTips](#introduction)
-  It's a library based on data stucture and problem solving algorithm in JavaScript .
+A TypeScript library for data structures, algorithms, and functional programming utilities.
 
-2.[Why javastips](#why)
-  Javastips makes your developement in javaScript easier by taking the hassle out of working with different types allowed by ecmaScript versions.
+## What is JavasTips?
 
-3.[The purpose of JavasTips](#purpose)
-  The purpose is to understand the big black box of *functional programming* and how works different methods like `map(..) , each(...), filter(...), reduce(...) , find(...)`, and some tips .
+JavasTips is a utility library based on data structures and problem-solving algorithms, now fully implemented in TypeScript. It provides type-safe implementations of common functional programming patterns and utility functions.
 
-# Installation
+## Why JavasTips?
+
+JavasTips makes your development easier by:
+- Providing type safety with TypeScript
+- Offering a comprehensive set of utility functions
+- Implementing common algorithms and data structure operations
+- Simplifying functional programming patterns
+
+## Installation
 
 ```bash
-> npm i javastips --save
+npm install javastips --save
 ```
 
-# Using library
+## Usage
 
-* With nodeJs
+### With TypeScript
 
-```javascript
-   let javastips = require("javastips");
-   let { reverse } = javastips
+```typescript
+import { reverse, each, add, UpperCase } from "javastips";
 
-   let array = [1, 3, 4, 5];
+// Array operations
+const array = [1, 3, 4, 5];
+const reversed = reverse(array); // [5, 4, 3, 1]
 
-   reverse(array); // [5, 4, 3, 1]
+// Iteration
+each([3, 2, 14, 6], (value) => console.log(value)); // 3 2 14 6
+
+// Math operations
+const sum = add(5, 3); // 8
+
+// String operations
+const uppercased = UpperCase("hello"); // "HELLO"
 ```
 
-* With es6 import
+### With JavaScript (Browser)
 
-```javascript
-   import { each } from "javastips";
-
-   var array = [3, 2, 14, 6];
-
-   each(array, (value) => console.log(value)); /* 3 2 14 6 */
+```html
+<script src="dist/javastips.js"></script>
+<script>
+  // Use the library
+  const reversed = javastips.reverse([1, 2, 3, 4]);
+  console.log(reversed); // [4, 3, 2, 1]
+  
+  const sum = javastips.add(5, 3);
+  console.log(sum); // 8
+</script>
 ```
 
-## Options
+## Available Functions
 
-### Regular tips
+### Functional Programming Utilities
 
-* *each* - implementation of the forEach function | *take a callback* .
-* *map* - return a new array ,work like map in es6| *take a callback* .
-* *filter* - filter an array | *take a callback* .
-* *reduce* - reduce an array by one value .
-* *find* - find an element and return true if finded or false .
-* *reverse* - reverse an array or string and return it.
-* *sort* - sort an array , object and return it .
-* *by* - complement of sort function | *take a callback* .
-* *linearSearch* - make a linear seach with an array .
-* *.....* and more .
+| Function | Description |
+|----------|-------------|
+| `each` | Iterates over a list, calling a provided function for each element |
+| `map` | Creates a new array with the results of calling a function on every element |
+| `filter` | Creates a new array with elements that pass a test |
+| `reduce` | Reduces an array to a single value |
+| `easyReduce` | Simplified version of reduce |
+| `find` | Finds an element in an array or object |
+| `sort` | Sorts an array or object |
+| `by` | Complement of sort function for complex sorting |
+| `linearSearch` | Performs a linear search on an array |
+| `not` | Returns the negation of a function |
+| `once` | Creates a function that can only be called once |
+| `unary` | Creates a function that accepts exactly one parameter |
 
-### String tips
+### String Operations
 
-* *LowerCase()* - Transform a string in LowerCase .
-* *UpperCase()* - Transform a string in Upper case .
-* *CamelCase()* - Transform a string in Camel case .
-* *AccentToNoAccent()* - Take a string with accent as a param and return it without accent .
+| Function | Description |
+|----------|-------------|
+| `LowerCase` | Transforms a string to lowercase |
+| `UpperCase` | Transforms a string to uppercase |
+| `CamelCase` | Transforms a string to camel case |
+| `AccentToNoAccent` | Removes accents from a string |
+| `replaceAll` | Replaces all occurrences of a substring |
+| `trim` | Removes whitespace from both ends of a string |
+| `CountWords` | Counts the number of words in a string |
+| `randomString` | Generates a random string |
 
-### Array tips
+### Array Operations
 
-* *LengthOf()* - Return the lenght of an element | take *array* | return *number*.
-* *withoutDuplicate()* - Return an array without duplicate number | *return an array* .
-* *beginAndEndOf()* - Return value at the begin and the end of the array passed in params
+| Function | Description |
+|----------|-------------|
+| `LengthOf` | Returns the length of an array |
+| `withoutDuplicate` | Returns an array without duplicate elements |
+| `beginAndEndOf` | Returns values at the beginning and end of an array |
+| `zip` | Combines elements from multiple arrays |
+| `maxValue` | Returns the maximum value in an array |
+| `minValue` | Returns the minimum value in an array |
+| `allEqual` | Checks if all elements in an array are equal |
+| `difference` | Returns the difference between two arrays |
+| `lastElement` | Returns the last element of an array |
 
-## Standard
+### Math Operations
 
-EcmaScript 6
+| Function | Description |
+|----------|-------------|
+| `add` | Adds two numbers |
+| `mult` | Multiplies two numbers |
+| `substract` | Subtracts one number from another |
+| `odd` | Checks if a number is odd |
+| `even` | Checks if a number is even |
+| `matrix` | Creates a matrix with specified dimensions |
+| `euclidean` | Calculates the Euclidean algorithm |
+| `square` | Performs square-related calculations |
+| `EMC2` | Calculates energy using E=mc² |
+| `primes` | Generates prime numbers up to a given number |
+
+### Algorithms
+
+| Function | Description |
+|----------|-------------|
+| `BoyerMoreHorspool` | Implements the Boyer-Moore-Horspool string search algorithm |
+| `getFibonacciSequence` | Generates a Fibonacci sequence |
+| `BubbleSort` | Implements the bubble sort algorithm |
+
+## Building from Source
+
+```bash
+# Install dependencies
+npm install
+
+# Build with rollup (generates dist/javastips.js)
+npm run build
+
+# Build with webpack (generates build/javastips.bundle.js)
+export NODE_OPTIONS=--openssl-legacy-provider && npm run webpack
+
+# Type checking
+npm run type-check
+```
+
+## License
+
+MIT
