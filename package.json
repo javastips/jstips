@@ -1,6 +1,7 @@
 {
   "name": "javastips",
   "version": "1.0.3",
+  "description": "A TypeScript utility library with functional helpers, string tools, array helpers, math helpers, and basic algorithms.",
   "main": "dist/javastips.js",
   "types": "dist/bundle.d.ts",
   "type": "module",
@@ -14,8 +15,10 @@
   "keywords": [
     "javastips"
   ],
+  "license": "MIT",
   "author": "Svngoku",
   "scripts": {
+    "test": "node --test",
     "webpack": "webpack",
     "build": "rollup --config",
     "tsc": "tsc",

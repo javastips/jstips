@@ -2,6 +2,7 @@ var javastips = (function (exports) {
   'use strict';
 
   /**
+   * @example
    * const t = "bonjour jeremy , tu vas bien ? "
    * const s = "jeremy";
    * console.time("moore");
