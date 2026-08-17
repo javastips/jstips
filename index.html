@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavasTips — A TypeScript utility library</title>
+<meta name="description" content="JavasTips: functional helpers, string tools, array helpers, math helpers and algorithms for TypeScript. Try it in the playground.">
+<style>
+  :root {
+    --bg: #0c0c0f;
+    --surface: #141419;
+    --surface-2: #1b1b22;
+    --border: #262630;
+    --text: #e8e8ec;
+    --muted: #8b8b98;
+    --accent: #f7df1e;
+    --accent-dim: #a29316;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── header ─────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(12,12,15,.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: -.02em; text-decoration: none; color: var(--text); }
+  .logo-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: var(--accent); color: #111;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-weight: 700; font-size: 13px;
+  }
+  nav { display: flex; gap: 22px; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .15s; }
+  nav a:hover { color: var(--text); }
+  nav .gh { color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 5px 14px; }
+  nav .gh:hover { border-color: var(--accent-dim); }
+
+  /* ── hero ───────────────────────────────── */
+  .hero { padding: 110px 0 90px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 500px; pointer-events: none;
+    background: radial-gradient(closest-side, rgba(247,223,30,.13), transparent);
+  }
+  .eyebrow {
+    display: inline-block; font-family: var(--mono); font-size: 12px;
+    color: var(--accent); border: 1px solid var(--accent-dim);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 22px;
+  }
+  h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 800; letter-spacing: -.035em; line-height: 1.05; }
+  h1 .accent { color: var(--accent); }
+  .hero p.sub { color: var(--muted); font-size: 18px; max-width: 560px; margin: 20px 0 30px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 14px; text-decoration: none;
+    padding: 12px 22px; border-radius: 10px; transition: all .15s;
+  }
+  .btn-primary { background: var(--accent); color: #111; font-weight: 600; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(247,223,30,.25); }
+  .btn-ghost { color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--muted); }
+  .install {
+    margin-top: 34px; font-family: var(--mono); font-size: 13.5px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px; display: inline-block; color: var(--muted);
+  }
+  .install b { color: var(--text); font-weight: 500; }
+
+  /* ── features ───────────────────────────── */
+  .section { padding: 80px 0; border-top: 1px solid var(--border); }
+  .section-label { font-family: var(--mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
+  h2 { font-size: 32px; font-weight: 750; letter-spacing: -.025em; margin-bottom: 40px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+  .card h3 { font-size: 15px; font-weight: 650; margin-bottom: 10px; }
+  .card code {
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+    display: block; line-height: 1.9;
+  }
+  .card code em { color: var(--accent); font-style: normal; }
+
+  /* ── playground ─────────────────────────── */
+  .playground {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+  .pg-top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .dots { display: flex; gap: 7px; }
+  .dots span { width: 11px; height: 11px; border-radius: 50%; background: var(--border); }
+  .dots span:nth-child(1) { background: #ff5f57; }
+  .dots span:nth-child(2) { background: #febc2e; }
+  .dots span:nth-child(3) { background: #28c840; }
+  .snippets { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    font-family: var(--mono); font-size: 12px; cursor: pointer;
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px;
+    transition: all .15s;
+  }
+  .chip:hover, .chip.active { color: var(--accent); border-color: var(--accent-dim); }
+  .editor {
+    width: 100%; min-height: 240px; resize: vertical;
+    background: var(--surface); color: var(--text);
+    border: none; outline: none; padding: 20px;
+    font-family: var(--mono); font-size: 13.5px; line-height: 1.75;
+    tab-size: 2; caret-color: var(--accent);
+  }
+  .pg-actions { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--border); background: var(--surface-2); }
+  .run {
+    font-family: var(--mono); font-size: 13px; font-weight: 600; cursor: pointer;
+    background: var(--accent); color: #111; border: none;
+    border-radius: 8px; padding: 9px 20px; transition: all .15s;
+  }
+  .run:hover { box-shadow: 0 4px 18px rgba(247,223,30,.3); }
+  .kbd { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+  .kbd kbd {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 5px; padding: 1px 6px; font-size: 11px;
+  }
+  .output {
+    background: #0a0a0d; border-top: 1px solid var(--border);
+    padding: 16px 20px; min-height: 90px; max-height: 320px; overflow-y: auto;
+    font-family: var(--mono); font-size: 13px; line-height: 1.8; white-space: pre-wrap;
+    display: none;
+  }
+  .output.visible { display: block; }
+  .output .line { color: var(--text); }
+  .output .err { color: #ff7b72; }
+  .output .ret { color: var(--accent); }
+  .lib-status { font-family: var(--mono); font-size: 12px; color: var(--muted); padding: 0 0 14px; }
+  .lib-status.ok::before { content: "● "; color: #28c840; }
+  .lib-status.fail::before { content: "● "; color: #ff5f57; }
+
+  footer { border-top: 1px solid var(--border); padding: 36px 0; color: var(--muted); font-size: 13.5px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .hero { padding: 70px 0 60px; }
+    nav a:not(.gh) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><span class="logo-mark">JS</span> JavasTips</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#playground">Playground</a>
+      <a class="gh" href="https://github.com/javastips/jstips">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">v1.0.3 · TypeScript 7 · esbuild</span>
+    <h1>Small helpers.<br><span class="accent">Sharp edges removed.</span></h1>
+    <p class="sub">A TypeScript utility library with functional helpers, string tools, array helpers, math helpers and a few classic algorithms — no dependencies.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#playground">Try the playground</a>
+      <a class="btn btn-ghost" href="https://github.com/javastips/jstips">View on GitHub</a>
+    </div>
+    <div class="install">$ <b>npm install javastips</b></div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-label">What's inside</div>
+    <h2>Seven domains, one import.</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Functional</h3>
+        <code><em>map</em> · <em>filter</em> · <em>reduce</em> · <em>each</em><br>once · unary · not · DefType</code>
+      </div>
+      <div class="card">
+        <h3>Arrays</h3>
+        <code><em>reverse</em> · <em>sort</em> · <em>take</em> · find<br>zip · difference · withoutDuplicate</code>
+      </div>
+      <div class="card">
+        <h3>Strings</h3>
+        <code><em>CamelCase</em> · UpperCase · LowerCase<br>replaceAll · trim · AccentToNoAccent</code>
+      </div>
+      <div class="card">
+        <h3>Math</h3>
+        <code><em>add</em> · substract · mult · square<br>primes · euclidean · even · odd</code>
+      </div>
+      <div class="card">
+        <h3>Algorithms</h3>
+        <code><em>BubbleSort</em> · getFibonacciSequence<br>BoyerMoreHorspool · linearSearch</code>
+      </div>
+      <div class="card">
+        <h3>Types & utils</h3>
+        <code><em>Clone</em> · Floatify · isEmpty<br>isNumeric · set · define · easyReduce</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="playground">
+  <div class="wrap">
+    <div class="section-label">Playground</div>
+    <h2>Try it, right here.</h2>
+    <p class="lib-status" id="lib-status">loading dist/javastips.js…</p>
+    <div class="playground">
+      <div class="pg-top">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="snippets" id="snippets"></div>
+      </div>
+      <textarea class="editor" id="editor" spellcheck="false"></textarea>
+      <div class="pg-actions">
+        <button class="run" id="run">▶ Run</button>
+        <span class="kbd"><kbd>⌘</kbd> + <kbd>↵</kbd> to run · the lib is exposed as <kbd>javastips</kbd></span>
+      </div>
+      <div class="output" id="output"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>JavasTips · MIT License</span>
+    <span><a href="https://github.com/javastips/jstips">github.com/javastips/jstips</a></span>
+  </div>
+</footer>
+
+<script src="dist/javastips.js"></script>
+<script>
+(function () {
+  const status = document.getElementById('lib-status');
+  const lib = window.javastips;
+  if (lib) {
+    status.className = 'lib-status ok';
+    status.textContent = 'javastips loaded — ' + Object.keys(lib).length + ' helpers available';
+  } else {
+    status.className = 'lib-status fail';
+    status.textContent = 'could not load dist/javastips.js — run "npm run build" first';
+  }
+
+  const snippets = {
+    'Functional': `const { map, filter, reduce, once } = javastips;
+
+console.log(map([1, 2, 3], n => n * 10));
+console.log(filter([1, 2, 3, 4, 5], n => n % 2 === 0));
+console.log(reduce([1, 2, 3, 4], (n, acc) => n + acc, 0));
+
+const greetOnce = once(name => 'hello ' + name);
+console.log(greetOnce('world')); // "hello world"
+console.log(greetOnce('again')); // undefined — it only runs once`,
+    'Arrays': `const { reverse, take, zip, difference, withoutDuplicate } = javastips;
+
+console.log(reverse([1, 2, 3, 4]));
+console.log(difference([1, 2, 3, 4], [2, 4]));
+console.log([...withoutDuplicate([1, 1, 2, 2, 3])]);
+console.log(zip([1, 2], ['a', 'b'], (n, s) => n + s));`,
+    'Strings': `const { CamelCase, UpperCase, replaceAll, CountWords } = javastips;
+
+console.log(CamelCase('hello world of tips'));
+console.log(UpperCase('typescript'));
+console.log(replaceAll('aa-bb-cc', '-', '_'));
+console.log(CountWords('one two three'));`,
+    'Algorithms': `const { BubbleSort, getFibonacciSequence, linearSearch } = javastips;
+
+console.log(BubbleSort([5, 3, 8, 1, 9, 2]));
+console.log(getFibonacciSequence(8));
+console.log(linearSearch([4, 7, 2, 9], 7));`
+  };
+
+  const editor = document.getElementById('editor');
+  const output = document.getElementById('output');
+  const bar = document.getElementById('snippets');
+
+  Object.keys(snippets).forEach((name, i) => {
+    const chip = document.createElement('button');
+    chip.className = 'chip' + (i === 0 ? ' active' : '');
+    chip.textContent = name;
+    chip.onclick = () => {
+      bar.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      editor.value = snippets[name];
+    };
+    bar.appendChild(chip);
+  });
+  editor.value = snippets[Object.keys(snippets)[0]];
+
+  function fmt(v) {
+    if (v instanceof Set || v instanceof Map) v = [...v];
+    if (typeof v === 'object' && v !== null) {
+      try { return JSON.stringify(v); } catch { return String(v); }
+    }
+    return String(v);
+  }
+
+  function run() {
+    const lines = [];
+    const fake = {
+      log: (...a) => lines.push({ t: 'line', m: a.map(fmt).join(' ') }),
+      info: (...a) => lines.push({ t: 'line', m: a.map(fmt).join(' ') }),
+      warn: (...a) => lines.push({ t: 'line', m: '⚠ ' + a.map(fmt).join(' ') }),
+      error: (...a) => lines.push({ t: 'err', m: a.map(fmt).join(' ') })
+    };
+    try {
+      const ret = new Function('javastips', 'console', '"use strict";\n' + editor.value)(lib, fake);
+      if (ret !== undefined) lines.push({ t: 'ret', m: '⇦ ' + fmt(ret) });
+    } catch (e) {
+      lines.push({ t: 'err', m: '✗ ' + (e && e.message ? e.message : e) });
+    }
+    output.classList.add('visible');
+    output.innerHTML = lines.length
+      ? lines.map(l => '<div class="' + l.t + '">' + l.m.replace(/</g, '&lt;') + '</div>').join('')
+      : '<div class="line">// no output — use console.log()</div>';
+  }
+
+  document.getElementById('run').onclick = run;
+  editor.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') run();
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const s = editor.selectionStart;
+      editor.value = editor.value.slice(0, s) + '  ' + editor.value.slice(editor.selectionEnd);
+      editor.selectionStart = editor.selectionEnd = s + 2;
+    }
+  });
+})();
+</script>
+</body>
+</html>

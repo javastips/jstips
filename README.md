@@ -4,6 +4,8 @@
 
 A TypeScript library for data structures, algorithms, and functional programming utilities.
 
+🌐 **[Live docs & playground → javastips.github.io/jstips](https://javastips.github.io/jstips/)**
+
 ## What is JavasTips?
 
 JavasTips is a utility library based on data structures and problem-solving algorithms, now fully implemented in TypeScript. It provides type-safe implementations of common functional programming patterns and utility functions.

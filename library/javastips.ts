@@ -194,7 +194,7 @@ export const linearSearch = function(array: number[], number: number): boolean |
   if(Array.isArray(array)) {
     for(var i = 0; i < size; i++) {
       if(array[i] == number) {
-       position = array[i] - 1;
+       position = i;
         console.log(`Position: ${position} .`);
         return;
       }
