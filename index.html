@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JavasTips — A TypeScript utility library</title>
 <meta name="description" content="JavasTips: functional helpers, string tools, array helpers, math helpers and algorithms for TypeScript. Try it in the playground.">
+<meta property="og:title" content="JavasTips — A TypeScript utility library">
+<meta property="og:description" content="Functional helpers, string tools, array helpers, math helpers and classic algorithms for TypeScript. Try it in the playground.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://javastips.github.io/jstips/">
+<meta property="og:image" content="https://raw.githubusercontent.com/javastips/jstips/master/js.gif">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23dfd06a'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='30' font-weight='bold' text-anchor='middle' fill='%230c0c0f'%3EJS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/tokyo-night-dark.min.css">
 <style>
   :root {
@@ -14,10 +24,10 @@
     --border: #262630;
     --text: #e8e8ec;
     --muted: #8b8b98;
-    --accent: #f7df1e;
-    --accent-dim: #a29316;
-    --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
-    --sans: -apple-system, "Inter", "Segoe UI", Roboto, sans-serif;
+    --accent: #dfd06a;
+    --accent-dim: #8d8150;
+    --mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    --sans: "Geist", -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -56,7 +66,7 @@
   .hero::before {
     content: ""; position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
     width: 700px; height: 500px; pointer-events: none;
-    background: radial-gradient(closest-side, rgba(247,223,30,.13), transparent);
+    background: radial-gradient(closest-side, rgba(223,208,106,.14), transparent);
   }
   .eyebrow {
     display: inline-block; font-family: var(--mono); font-size: 12px;
@@ -72,7 +82,7 @@
     padding: 12px 22px; border-radius: 10px; transition: all .15s;
   }
   .btn-primary { background: var(--accent); color: #111; font-weight: 600; }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(247,223,30,.25); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(223,208,106,.22); }
   .btn-ghost { color: var(--text); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--muted); }
   .install {
@@ -86,7 +96,14 @@
   .section { padding: 80px 0; border-top: 1px solid var(--border); }
   .section-label { font-family: var(--mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
   h2 { font-size: 32px; font-weight: 750; letter-spacing: -.025em; margin-bottom: 40px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+  .grid .span-5 { grid-column: span 5; }
+  .grid .span-6 { grid-column: span 6; }
+  .grid .span-7 { grid-column: span 7; }
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr; }
+    .grid > * { grid-column: auto !important; }
+  }
   .card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 14px; padding: 22px; transition: border-color .15s, transform .15s;
@@ -143,7 +160,7 @@
     background: var(--accent); color: #111; border: none;
     border-radius: 8px; padding: 9px 20px; transition: all .15s;
   }
-  .run:hover { box-shadow: 0 4px 18px rgba(247,223,30,.3); }
+  .run:hover { box-shadow: 0 4px 18px rgba(223,208,106,.28); }
   .kbd { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
   .kbd kbd {
     background: var(--surface); border: 1px solid var(--border);
@@ -168,17 +185,60 @@
   footer a { color: var(--muted); }
   footer a:hover { color: var(--accent); }
 
+  /* ── polish pass ── */
+  h1, h2 { text-wrap: balance; }
+  ::selection { background: rgba(223,208,106,.25); }
+  a:focus-visible, button:focus-visible, textarea:focus-visible, .chip:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  .editor:focus-visible { outline-offset: -2px; }
+  .btn:active, .run:active, .chip:active { transform: scale(.97); }
+  nav a.current { color: var(--accent); }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--accent); color: #111; padding: 10px 16px;
+    border-radius: 0 0 8px 0; font: 600 14px var(--sans); text-decoration: none;
+  }
+  .skip:focus { left: 0; }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  .card { position: relative; overflow: hidden; }
+  .card::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(223,208,106,.28), transparent 45%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+    opacity: 0; transition: opacity .3s; pointer-events: none;
+  }
+  .card:hover::before { opacity: 1; }
+
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .card:hover { transform: none; }
+  }
+
   @media (max-width: 640px) {
     .hero { padding: 70px 0 60px; }
     nav a:not(.gh) { display: none; }
   }
 </style>
 </head>
-<body>
+<body id="top">
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#"><span class="logo-mark">JS</span> JavasTips</a>
+    <a class="logo" href="#top"><span class="logo-mark">JS</span> JavasTips</a>
     <nav>
       <a href="#features">Features</a>
       <a href="#playground">Playground</a>
@@ -187,8 +247,10 @@
   </div>
 </header>
 
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap reveal">
     <span class="eyebrow">v1.0.3 · TypeScript 7 · esbuild</span>
     <h1>Small helpers.<br><span class="accent">Sharp edges removed.</span></h1>
     <p class="sub">A TypeScript utility library with functional helpers, string tools, array helpers, math helpers and a few classic algorithms — no dependencies.</p>
@@ -203,34 +265,34 @@
 <section class="section" id="features">
   <div class="wrap">
     <div class="section-label">What's inside</div>
-    <h2>Seven domains, one import.</h2>
+    <h2 class="reveal">Seven domains, one import.</h2>
     <div class="grid">
-      <div class="card">
+      <div class="card span-7 reveal">
         <h3>Functional</h3>
         <pre><code class="language-typescript">javastips.map([1, 2, 3], n => n * 10)
 // → [10, 20, 30]</code></pre>
       </div>
-      <div class="card">
+      <div class="card span-5 reveal">
         <h3>Arrays</h3>
         <pre><code class="language-typescript">javastips.reverse([1, 2, 3, 4])
 // → [4, 3, 2, 1]</code></pre>
       </div>
-      <div class="card">
+      <div class="card span-5 reveal">
         <h3>Strings</h3>
         <pre><code class="language-typescript">javastips.CamelCase('hello world')
 // → "helloWorld"</code></pre>
       </div>
-      <div class="card">
+      <div class="card span-7 reveal">
         <h3>Math</h3>
         <pre><code class="language-typescript">javastips.add(2, 3) + javastips.square(9)
 // → 86</code></pre>
       </div>
-      <div class="card">
+      <div class="card span-6 reveal">
         <h3>Algorithms</h3>
         <pre><code class="language-typescript">javastips.BubbleSort([5, 3, 8, 1])
 // → [1, 3, 5, 8]</code></pre>
       </div>
-      <div class="card">
+      <div class="card span-6 reveal">
         <h3>Types & utils</h3>
         <pre><code class="language-typescript">javastips.Floatify(3.14159, 2)
 // → "3.14"</code></pre>
@@ -242,9 +304,9 @@
 <section class="section" id="playground">
   <div class="wrap">
     <div class="section-label">Playground</div>
-    <h2>Try it, right here.</h2>
+    <h2 class="reveal">Try it, right here.</h2>
     <p class="lib-status" id="lib-status">loading dist/javastips.js…</p>
-    <div class="playground">
+    <div class="playground reveal">
       <div class="pg-top">
         <div class="dots"><span></span><span></span><span></span></div>
         <div class="snippets" id="snippets"></div>
@@ -261,6 +323,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -386,6 +449,38 @@ console.log(linearSearch([4, 7, 2, 9], 7));`
       editor.selectionStart = editor.selectionEnd = s + 2;
     }
   });
+
+  // spotlight borders track the cursor over feature cards
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // staggered scroll-in reveals
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach((el, i) => { el.style.transitionDelay = (i % 6) * 60 + 'ms'; io.observe(el); });
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+
+  // nav highlights the section currently in view
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      navLinks.forEach(l => l.classList.toggle('current', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  ['features', 'playground'].forEach(id => spy.observe(document.getElementById(id)));
 })();
 </script>
 </body>
