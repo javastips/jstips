@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JavasTips — A TypeScript utility library</title>
 <meta name="description" content="JavasTips: functional helpers, string tools, array helpers, math helpers and algorithms for TypeScript. Try it in the playground.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/tokyo-night-dark.min.css">
 <style>
   :root {
     --bg: #0c0c0f;
@@ -92,11 +93,9 @@
   }
   .card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
   .card h3 { font-size: 15px; font-weight: 650; margin-bottom: 10px; }
-  .card code {
-    font-family: var(--mono); font-size: 12.5px; color: var(--muted);
-    display: block; line-height: 1.9;
-  }
-  .card code em { color: var(--accent); font-style: normal; }
+  .card pre { margin: 8px 0 0; font-family: var(--mono); font-size: 12.5px; line-height: 1.85; overflow-x: auto; }
+  .card pre code.hljs { background: transparent; padding: 0; }
+  .card .fn { color: var(--accent); font-weight: 600; }
 
   /* ── playground ─────────────────────────── */
   .playground {
@@ -121,12 +120,22 @@
     transition: all .15s;
   }
   .chip:hover, .chip.active { color: var(--accent); border-color: var(--accent-dim); }
+  .editor-wrap { position: relative; min-height: 240px; }
+  .editor-highlight {
+    position: absolute; inset: 0; margin: 0; padding: 20px;
+    overflow: hidden; pointer-events: none;
+    font-family: var(--mono); font-size: 13.5px; line-height: 1.75;
+    tab-size: 2; white-space: pre-wrap; overflow-wrap: break-word;
+  }
+  .editor-highlight code.hljs { background: transparent; padding: 0; tab-size: 2; }
   .editor {
+    position: relative; z-index: 1; display: block;
     width: 100%; min-height: 240px; resize: vertical;
-    background: var(--surface); color: var(--text);
+    background: transparent; color: transparent;
     border: none; outline: none; padding: 20px;
     font-family: var(--mono); font-size: 13.5px; line-height: 1.75;
     tab-size: 2; caret-color: var(--accent);
+    white-space: pre-wrap; overflow-wrap: break-word;
   }
   .pg-actions { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--border); background: var(--surface-2); }
   .run {
@@ -198,27 +207,33 @@
     <div class="grid">
       <div class="card">
         <h3>Functional</h3>
-        <code><em>map</em> · <em>filter</em> · <em>reduce</em> · <em>each</em><br>once · unary · not · DefType</code>
+        <pre><code class="language-typescript">javastips.map([1, 2, 3], n => n * 10)
+// → [10, 20, 30]</code></pre>
       </div>
       <div class="card">
         <h3>Arrays</h3>
-        <code><em>reverse</em> · <em>sort</em> · <em>take</em> · find<br>zip · difference · withoutDuplicate</code>
+        <pre><code class="language-typescript">javastips.reverse([1, 2, 3, 4])
+// → [4, 3, 2, 1]</code></pre>
       </div>
       <div class="card">
         <h3>Strings</h3>
-        <code><em>CamelCase</em> · UpperCase · LowerCase<br>replaceAll · trim · AccentToNoAccent</code>
+        <pre><code class="language-typescript">javastips.CamelCase('hello world')
+// → "helloWorld"</code></pre>
       </div>
       <div class="card">
         <h3>Math</h3>
-        <code><em>add</em> · substract · mult · square<br>primes · euclidean · even · odd</code>
+        <pre><code class="language-typescript">javastips.add(2, 3) + javastips.square(9)
+// → 86</code></pre>
       </div>
       <div class="card">
         <h3>Algorithms</h3>
-        <code><em>BubbleSort</em> · getFibonacciSequence<br>BoyerMoreHorspool · linearSearch</code>
+        <pre><code class="language-typescript">javastips.BubbleSort([5, 3, 8, 1])
+// → [1, 3, 5, 8]</code></pre>
       </div>
       <div class="card">
         <h3>Types & utils</h3>
-        <code><em>Clone</em> · Floatify · isEmpty<br>isNumeric · set · define · easyReduce</code>
+        <pre><code class="language-typescript">javastips.Floatify(3.14159, 2)
+// → "3.14"</code></pre>
       </div>
     </div>
   </div>
@@ -234,7 +249,10 @@
         <div class="dots"><span></span><span></span><span></span></div>
         <div class="snippets" id="snippets"></div>
       </div>
-      <textarea class="editor" id="editor" spellcheck="false"></textarea>
+      <div class="editor-wrap">
+        <pre class="editor-highlight" aria-hidden="true"><code id="editor-code" class="language-typescript"></code></pre>
+        <textarea class="editor" id="editor" spellcheck="false" aria-label="Playground code editor"></textarea>
+      </div>
       <div class="pg-actions">
         <button class="run" id="run">▶ Run</button>
         <span class="kbd"><kbd>⌘</kbd> + <kbd>↵</kbd> to run · the lib is exposed as <kbd>javastips</kbd></span>
@@ -251,6 +269,7 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
 <script src="dist/javastips.js"></script>
 <script>
 (function () {
@@ -305,10 +324,29 @@ console.log(linearSearch([4, 7, 2, 9], 7));`
       bar.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       editor.value = snippets[name];
+      highlight();
     };
     bar.appendChild(chip);
   });
+  const hlCode = document.getElementById('editor-code');
+  const hlPre = hlCode.parentElement;
+  function highlight() {
+    let src = editor.value;
+    if (src.endsWith('\n')) src += '\n'; // keep overlay in sync with trailing newline
+    hlCode.textContent = src;
+    hlCode.removeAttribute('data-highlighted');
+    if (window.hljs) hljs.highlightElement(hlCode);
+    syncScroll();
+  }
+  function syncScroll() {
+    hlPre.scrollTop = editor.scrollTop;
+    hlPre.scrollLeft = editor.scrollLeft;
+  }
+  editor.addEventListener('input', highlight);
+  editor.addEventListener('scroll', syncScroll);
+
   editor.value = snippets[Object.keys(snippets)[0]];
+  highlight();
 
   function fmt(v) {
     if (v instanceof Set || v instanceof Map) v = [...v];
