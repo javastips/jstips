@@ -5,7 +5,7 @@ This is a TypeScript refactoring of the JavasTips library. The original JavaScri
 ## Changes Made
 
 1. Converted all JavaScript files to TypeScript with proper type annotations
-2. Updated build system (webpack and rollup) to handle TypeScript
+2. Updated build system (webpack and esbuild) to handle TypeScript
 3. Added TypeScript configuration (tsconfig.json)
 4. Generated type declaration files (.d.ts)
 5. Updated package.json to include TypeScript-related scripts and dependencies

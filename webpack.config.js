@@ -1,11 +1,13 @@
-const webpack = require('webpack')
-const { resolve } = require('path');
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-module.exports = {
-  mode: "development",
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default {
+  mode: 'development',
   entry: './library/bundle.ts',
   output: {
-    path: resolve(__dirname, "build"),
+    path: resolve(__dirname, 'build'),
     publicPath: '/',
     filename: 'javastips.bundle.js',
   },
@@ -14,19 +16,11 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'ts-loader'
+        loader: 'esbuild-loader',
+        options: { target: 'es2015' },
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      }
-    ]
+    ],
   },
-  stats: {
-    colors: true
-  },
-  resolve: {
-    extensions: ["*", ".ts", ".tsx", ".js"]
-  },
+  stats: { colors: true },
+  resolve: { extensions: ['.ts', '.tsx', '.js'] },
 };

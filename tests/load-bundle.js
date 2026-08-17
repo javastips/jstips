@@ -11,11 +11,6 @@ export function loadBundle() {
   const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
   const bundlePath = path.resolve(currentDirectory, "../dist/javastips.js");
   const source = fs.readFileSync(bundlePath, "utf8");
-  const context = { console };
-
-  vm.createContext(context);
-  vm.runInContext(source, context);
-
-  cachedBundle = context.javastips;
+  cachedBundle = vm.runInThisContext(`${source}\n; javastips;`);
   return cachedBundle;
 }

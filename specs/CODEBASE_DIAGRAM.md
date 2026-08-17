@@ -68,9 +68,8 @@ flowchart LR
     end
 
     subgraph domain_assets["Tooling and Companion Assets"]
-        cfg_rollup["Rollup Config"]
+        cfg_build["esbuild + tsc Build"]
         cfg_webpack["Webpack Config"]
-        cfg_babel["Babel Config"]
         cfg_ci["Travis CI Config"]
         asset_snippets["VS Code Snippets"]
         asset_tips["Tips and Sandbox Scripts"]
@@ -78,10 +77,9 @@ flowchart LR
 
     pkg_manifest --> bundle_entry
     demo_main --> bundle_entry
-    cfg_rollup --> bundle_entry
+    cfg_build --> bundle_entry
     cfg_webpack --> bundle_entry
-    cfg_babel --> cfg_webpack
-    cfg_rollup --> dist_rollup
+    cfg_build --> dist_rollup
     bundle_entry --> mod_core
     bundle_entry --> mod_array
     bundle_entry --> mod_string
@@ -99,7 +97,7 @@ flowchart LR
 
 - `pkg_manifest`: `package.json:1`
 - `bundle_entry`: `library/bundle.js:1`
-- `dist_rollup`: `rollup.config.js:1`, `dist/javastips.js:1`
+- `dist_rollup`: `dist/javastips.js:1` (built by the `build` script in `package.json`)
 - `demo_main`: `library/main.js:1`
 - `mod_core`: `library/javastips.js:1`
 - `mod_array`: `library/Array.js:1`
@@ -113,9 +111,8 @@ flowchart LR
 - `mod_url`: `library/http-url.js:1`
 - `mod_set`: `library/Set.js:1`
 - `mod_tree`: `library/tree.js:1`
-- `cfg_rollup`: `rollup.config.js:1`
+- `cfg_build`: `package.json` `build` script (esbuild bundle + `tsc --emitDeclarationOnly`)
 - `cfg_webpack`: `webpack.config.js:1`
-- `cfg_babel`: `.babelrc:1`
 - `cfg_ci`: `.travis.yml:1`
 - `asset_snippets`: `extension/javastips.json:1`
 - `asset_tips`: `tips/generate-word-F2.js:1`, `tips/recursive-three.js:1`
